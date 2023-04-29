@@ -67,6 +67,35 @@ public class PlayerManager : MonoBehaviour
         nbrGemStone += nbrGemStoneToAdd;
     }
 
+    public void LoseMoney(int money)
+    {
+        this.money -= money;
+    }
+    public void LoseSpaceShip(int nbrSpaceShip)
+    {
+        this.nbrSpaceShip -= nbrSpaceShip;
+    }
+    public void LoseUranium(int nbrUranium)
+    {
+        this.nbrUranium -= nbrUranium;
+    }
+    public void LoseArtifacts(int nbrArtifacts)
+    {
+        this.nbrArtifacts -= nbrArtifacts;
+    }
+    public void LosePatrol(int nbrPatrol)
+    {
+        this.nbrPatrol -= nbrPatrol;
+    }
+    public void LoseIron(int nbrIron)
+    {
+        this.nbrIron -= nbrIron;
+    }
+    public void LoseGemStone(int nbrGemStone)
+    {
+        this.nbrGemStone -= nbrGemStone;
+    }
+
     public int GetLevel()
     {
         return level;
@@ -103,10 +132,4 @@ public class PlayerManager : MonoBehaviour
     {
         return nbrGemStone;
     }
-
-    public Player GetPlayer()
-    {
-        return player;
-    }
 }
-
