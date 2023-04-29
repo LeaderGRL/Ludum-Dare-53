@@ -16,14 +16,35 @@ public class ShipStats
 
     public bool Available;
 
-    // Ressources dans la soute
-    // Place dans la soute
+
+    public int Capacity;
+
+    // A remplacer par un objet ressource;
+    
+    private int _ressources;
+    public int Ressources
+    {
+        get { return _ressources; }
+        set {
+            if (value > Capacity)
+            {
+                return;
+            }
+            _ressources = value; 
+        }
+    }
 
     public ShipStats()
     {
+        // Rempli de carburant
         MaxFuel = 250;
         Fuel = MaxFuel;
 
+        // Soute Vide
+        Capacity = 10;
+        Ressources = 0;
+
+        // Tout au niveau 1
         ReactorsLevel = 1;
         HoldLevel = 1;
         WeaponsLevel = 1;
@@ -32,6 +53,8 @@ public class ShipStats
         StyleLevel = 1;
 
         Available = true;
+
+        
     }
 
 }

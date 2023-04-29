@@ -29,4 +29,11 @@ public class ShipsManager : MonoBehaviour
         }
         ships.Add(new ShipStats());
     }
+
+    public void UpgradeCapacity(int capacity)
+    {
+        MaxShip += capacity;
+    }
+
+
 }
