@@ -6,11 +6,12 @@ public class ShipsManager : MonoBehaviour
 {
     public List<ShipStats> ships;
 
-
+    public int MaxShip;
 
 
     void Start()
     {
+        MaxShip = 1;
         ships = new List<ShipStats>();
         ships.Add(new ShipStats());
     }
@@ -19,5 +20,13 @@ public class ShipsManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AddShip() { 
+        if (ships.Count >= MaxShip)
+        {
+            return;
+        }
+        ships.Add(new ShipStats());
     }
 }
