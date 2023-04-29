@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/UnityThemes/SceneEliott.uss?fileID=7433441132597879392&amp;guid=1d3837eabb4595641b332033eb6c2bdd&amp;type=3#SceneEliott" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:Label tabindex="-1" text="Ship" display-tooltip-when-elided="true" class="header" style="-unity-text-align: upper-center;" />
+    </ui:VisualElement>
+</ui:UXML>

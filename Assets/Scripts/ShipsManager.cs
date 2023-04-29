@@ -16,12 +16,6 @@ public class ShipsManager : MonoBehaviour
         ships.Add(new ShipStats());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddShip() { 
         if (ships.Count >= MaxShip)
         {
@@ -35,5 +29,19 @@ public class ShipsManager : MonoBehaviour
         MaxShip += capacity;
     }
 
+    public void UseShip(int index)
+    {
+        if (index < 0 || index >= ships.Count)
+        {
+            return;
+        }
+
+
+
+        ships[index].Available = false;
+
+
+
+    }
 
 }
