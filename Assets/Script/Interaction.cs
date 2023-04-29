@@ -27,8 +27,12 @@ public class Interaction : MonoBehaviour
         }
         else
         {
-            interactableObject.GetComponent<Outline>().enabled = false;
-            interactableObject = null;
+            if (interactableObject != null)
+            {
+                interactableObject.GetComponent<Outline>().enabled = false;
+                interactableObject = null;
+            }
+            
         }
     }
 }
