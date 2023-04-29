@@ -2,7 +2,6 @@ using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
 
-
 public class JSON
 {
     public static T  Reader<T>(string path)
@@ -25,5 +24,11 @@ public class JSON
     {
         public int xp;
         public int gold;
+    }
+
+    public struct ModuleData
+    {
+        public string name;
+        public Dictionary<string, int> levels;
     }
 }
