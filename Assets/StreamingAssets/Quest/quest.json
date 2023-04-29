@@ -1,0 +1,38 @@
+[
+  {
+    "name": "I need your help, Bob",
+    "description": "Bob needs your help ! He needs 24 wood",
+    "levelRequired": 2,
+    "target": 24
+  },
+  {
+    "name": "10",
+    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
+    "levelRequired": 3,
+    "target": 10
+  },
+  {
+    "name": "10",
+    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
+    "levelRequired": 3,
+    "target": 10
+  },
+  {
+    "name": "10",
+    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
+    "levelRequired": 3,
+    "target": 10
+  },
+  {
+    "name": "10",
+    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
+    "levelRequired": 3,
+    "target": 10
+  },
+  {
+    "name": "10",
+    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
+    "levelRequired": 3,
+    "target": 10
+  }
+]
