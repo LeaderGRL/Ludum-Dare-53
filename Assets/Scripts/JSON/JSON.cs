@@ -2,6 +2,7 @@ using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 public class JSON
 {
@@ -18,11 +19,9 @@ public class JSON
         public int target;
     }
 
-    public struct Module
+    public struct ModuleData
     {
         public string name;
-        public int level_1;
-        public int level_2;
-        public int level_3;
+        public Dictionary<string, int> levels;
     }
 }

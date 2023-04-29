@@ -14,6 +14,7 @@ public class ShipsManager : MonoBehaviour
         MaxShip = 1;
         ships = new List<ShipStats>();
         ships.Add(new ShipStats());
+        Debug.Log(ships[0].ToString());
     }
 
     public void AddShip() { 
@@ -35,13 +36,7 @@ public class ShipsManager : MonoBehaviour
         {
             return;
         }
-
-
-
         ships[index].Available = false;
-
-
-
     }
 
 }
