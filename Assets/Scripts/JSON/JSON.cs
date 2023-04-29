@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
@@ -18,6 +19,7 @@ public class JSON
         public float danger;
         public Reward reward;
         public float time;
+        
     }
 
     public struct Reward
