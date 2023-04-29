@@ -14,7 +14,7 @@ public struct Player
     public int nbrIron;
     public int nbrGemStone;
 
-    public Player(int level, int experience, int money, int nbrSpaceShip, int nbrUranium, int nbrArtifacts, int nbrPatrol, int nbrIron, int GemStone)
+    public Player(int level, int experience, int money, int nbrSpaceShip, int nbrUranium, int nbrArtifacts, int nbrPatrol, int nbrIron, int nbrGemStone)
     {
         this.level = level;
         this.experience = experience;

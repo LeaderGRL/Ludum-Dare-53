@@ -5,16 +5,16 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
-    public Player player;
-    public int level;
-    public int experience;
-    public int money;
-    public int nbrSpaceShip;
-    public int nbrUranium;
-    public int nbrArtifacts;
-    public int nbrPatrol;
-    public int nbrIron;
-    public int nbrGemStone;
+    private Player player;
+    private int level = 1;
+    private int experience = 0;
+    private int money = 0;
+    private int nbrSpaceShip = 0;
+    private int nbrUranium = 0;
+    private int nbrArtifacts = 0;
+    private int nbrPatrol = 0;
+    private int nbrIron = 0;
+    private int nbrGemStone = 0;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void Start()
     {
-        player = new Player(level, experience, money, nbrSpaceShip, nbrUranium, nbrArtifacts, nbrPatrol, nbrIron, GemStone);
+        player = new Player(level, experience, money, nbrSpaceShip, nbrUranium, nbrArtifacts, nbrPatrol, nbrIron, nbrGemStone);
     }
     public void AddExperience(int experienceToAdd)
     {
@@ -66,5 +66,47 @@ public class PlayerManager : MonoBehaviour
     {
         nbrGemStone += nbrGemStoneToAdd;
     }
-   
+
+    public int GetLevel()
+    {
+        return level;
+    }
+    public int GetExperience()
+    {
+        return experience;
+    }
+    public int GetMoney()
+    {
+        return money;
+    }
+    public int GetNbrSpaceShip()
+    {
+        return nbrSpaceShip;
+    }
+    public int GetNbrUranium()
+    {
+        return nbrUranium;
+    }
+    public int GetNbrArtifacts()
+    {
+        return nbrArtifacts;
+    }
+    public int GetNbrPatrol()
+    {
+        return nbrPatrol;
+    }
+    public int GetNbrIron()
+    {
+        return nbrIron;
+    }
+    public int GetNbrGemStone()
+    {
+        return nbrGemStone;
+    }
+
+    public Player GetPlayer()
+    {
+        return player;
+    }
 }
+
