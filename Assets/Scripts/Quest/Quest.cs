@@ -8,7 +8,7 @@ public class Quest : MonoBehaviour
 
     private void Start()
     {
-        JSON.Data[] quests = JSON.Reader("/Quest/quest.json");
+        JSON.Data[] quests = JSON.Reader<JSON.Data[]>("/Quest/quest.json");
         foreach (var quest in quests)
         {
             GameObject text = Instantiate(textPrefab, parent.transform);
@@ -16,6 +16,8 @@ public class Quest : MonoBehaviour
             parent.GetComponent<RectTransform>().rect.Set(parent.GetComponent<RectTransform>().rect.x,
                 parent.GetComponent<RectTransform>().rect.y, parent.GetComponent<RectTransform>().rect.width,
                 parent.GetComponent<RectTransform>().rect.height + 80);
+            Debug.Log(quest.name);
         }
+
     }
 }

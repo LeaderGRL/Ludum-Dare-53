@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class ShipStats
 {
-    
 
     public bool Available;
 
-
-
     public ShipStats()
     {
-        
-
-        Available = true;
-
-        
+        Available = true; 
     }
 
 }

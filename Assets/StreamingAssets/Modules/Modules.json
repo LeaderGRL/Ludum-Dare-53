@@ -1,27 +1,32 @@
-﻿{
-  "Reactor": {
-    "1": 5,
-    "2": 10,
-    "3": 15
+﻿[
+  {
+    "name": "Reactor",
+    "level_1": 5,
+    "level_2": 10,
+    "level_3": 15
   },
-  "Storage": {
-    "1": 10,
-    "2": 20,
-    "3": 40
+  {
+    "name": "Storage",
+    "level_1": 10,
+    "level_2": 20,
+    "level_3": 40
   },
-  "Tank": {
-    "1": 250,
-    "2": 400,
-    "3": 800
+  {
+    "name": "Tank",
+    "level_1": 250,
+    "level_2": 400,
+    "level_3": 800
   },
-  "Shield": {
-    "1": 10,
-    "2": 20,
-    "3": 30
+  {
+    "name": "Shield",
+    "level_1": 10,
+    "level_2": 20,
+    "level_3": 30
   },
-  "Weapons": {
-    "1": 5,
-    "2": 10,
-    "3" : 15
+  {
+    "name": "Weapons",
+    "level_1": 5,
+    "level_2": 10,
+    "level_3": 15
   }
-}
+]
