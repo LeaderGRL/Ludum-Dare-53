@@ -28,6 +28,11 @@ public class ShipStats
 
     public void UpgradeModuleLevel(string moduleName)
     {
+        if (!Available)
+        {
+            Debug.Log("Can't upgrade because not available!");
+            return;
+        }
         JSON.ModuleData[] moduleDatas = JSON.Reader<JSON.ModuleData[]>("/Modules/Modules.json");
         foreach (var item in moduleDatas)
         {
