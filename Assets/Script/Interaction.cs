@@ -24,6 +24,11 @@ public class Interaction : MonoBehaviour
                 interactableObject = hit.transform.gameObject;
                 interactableObject.GetComponent<Outline>().enabled = true;
             }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                // AFFICHER L'UI
+            }
         }
         else
         {
