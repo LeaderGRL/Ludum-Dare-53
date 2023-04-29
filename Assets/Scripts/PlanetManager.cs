@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlanetManager : MonoBehaviour
 {
-    
+    public static PlayerManager instance;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
