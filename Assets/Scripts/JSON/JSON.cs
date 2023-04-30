@@ -4,7 +4,7 @@ using System.IO;
 using Newtonsoft.Json;
 public class JSON
 {
-    public static T  Reader<T>(string path)
+    public static T Reader<T>(string path)
     {
         return JsonConvert.DeserializeObject<T>(File.ReadAllText(Application.streamingAssetsPath + path));
     }
@@ -14,11 +14,13 @@ public class JSON
         public string name;
         public string description;
         public int levelRequired;
-        public int target;
         public float danger;
         public Reward reward;
         public float time;
-        
+        public bool inProgress;
+        public int id;
+        public Dictionary<string, int> materials;
+        public Dictionary<string, string> destination;
     }
 
     public struct Reward

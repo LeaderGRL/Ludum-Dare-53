@@ -3,10 +3,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//to do : bouton accept et bouton quitter la quete
 public class Quest : MonoBehaviour
 {
     [SerializeField] private GameObject parent;
     [SerializeField] private GameObject textPrefab;
+    [SerializeField] private GameObject questDetails;
+    [SerializeField] private GameObject nameText;
+    [SerializeField] private GameObject descText;
+    [SerializeField] private GameObject timeTraverText;
+    [SerializeField] private GameObject RewardText;
+    [SerializeField] private GameObject DestinationText;
+    [SerializeField] private GameObject materialsText;
+    [SerializeField] private GameObject acceptButton;
+
+
     private int nPage = 0;
     private List<JSON.Data> filteredQuest;
     private List<List<JSON.Data>> page;
@@ -28,13 +39,37 @@ public class Quest : MonoBehaviour
         }
 
         parent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
-        foreach (var quest in page[nPage])
+        for (int i = 0; i < page[nPage].Count; i++)
         {
+            int index = i;
+            JSON.Data quest = page[nPage][i];
+            int id = quest.id;
             GameObject text = Instantiate(textPrefab, parent.transform);
             text.GetComponentInChildren<TMP_Text>().text = quest.name;
             parent.GetComponent<RectTransform>().sizeDelta = new Vector2(0,
                 parent.GetComponent<RectTransform>().sizeDelta.y + parent.GetComponent<GridLayoutGroup>().cellSize.y);
-            text.AddComponent<Button>().onClick.AddListener(() => { Debug.Log(quest.name); });
+            text.AddComponent<Button>().onClick.AddListener(() =>
+            {
+                questDetails.SetActive(true);
+                nameText.GetComponent<TMP_Text>().text = "Name : " + quest.name;
+                descText.GetComponent<TMP_Text>().text = "Description : " + quest.description;
+                timeTraverText.GetComponent<TMP_Text>().text = "Time travel : " + quest.time;
+                RewardText.GetComponent<TMP_Text>().text =
+                    "Rewards : " + quest.reward.xp + "xp " + quest.reward.gold + "Nebulite";
+                DestinationText.GetComponent<TMP_Text>().text = "Destination : " + quest.destination["planet"];
+                materialsText.GetComponent<TMP_Text>().text = "Required materials : ";
+                acceptButton.GetComponent<Button>().onClick.AddListener(() =>
+                {
+                    quest.inProgress = true;
+                    questDetails.SetActive(false);
+                    quests.SetValue(quest, id);
+                    ShowQuest();
+                });
+                foreach (var material in quest.materials)
+                {
+                    materialsText.GetComponent<TMP_Text>().text += material.Key + " " + material.Value + "\n";
+                }
+            });
         }
     }
 
@@ -43,7 +78,7 @@ public class Quest : MonoBehaviour
         List<JSON.Data> filteredQuests = new List<JSON.Data>();
         foreach (var quest in quests)
         {
-            if (level < quest.levelRequired) continue;
+            if (level < quest.levelRequired || quest.inProgress) continue;
             filteredQuests.Add(quest);
         }
 
@@ -52,9 +87,13 @@ public class Quest : MonoBehaviour
 
     public void LevelUp()
     {
-        Debug.Log(PlayerManager.instance.GetLevel());
         PlayerManager.instance.AddExperience(100);
         ShowQuest();
+    }
+
+    public void CloseButton()
+    {
+        questDetails.SetActive(false);
     }
 
     private List<List<JSON.Data>> pagination(List<JSON.Data> filteredQuest, int itemsPerPage)
@@ -69,11 +108,9 @@ public class Quest : MonoBehaviour
                 {
                     page.Add(filteredQuest[i]);
                 }
-
                 res.Add(page);
                 page = new List<JSON.Data>();
             }
-
             page.Add(filteredQuest[i]);
         }
 
