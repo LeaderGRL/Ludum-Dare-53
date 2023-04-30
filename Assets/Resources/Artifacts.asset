@@ -16,3 +16,4 @@ MonoBehaviour:
   quantity: 0
   icon: {fileID: 0}
   value: 10
+  Stackable: 1

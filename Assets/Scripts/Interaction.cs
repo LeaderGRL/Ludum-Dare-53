@@ -22,11 +22,12 @@ public class Interaction : MonoBehaviour
             if (hit.collider.gameObject.tag == "Interactable")
             {
                 interactableObject = hit.transform.gameObject;
-                interactableObject.GetComponent<Outline>().enabled = true;
+                interactableObject.GetComponent<Outline>().enabled = true; 
             }
 
             if (Input.GetMouseButtonDown(0))
             {
+                
                 // AFFICHER L'UI
             }
         }
@@ -39,6 +40,11 @@ public class Interaction : MonoBehaviour
             }
             
         }
+    }
+
+    private void DisplayPlanetUI(string planetName)
+    {
+        
     }
 }
 

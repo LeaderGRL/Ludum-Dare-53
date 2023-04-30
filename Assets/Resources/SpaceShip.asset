@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f36978e64a4588341b9701e3ff3d1cd4, type: 3}
-  m_Name: Iron
+  m_Name: SpaceShip
   m_EditorClassIdentifier: 
-  name: Iron
-  quantity: 0
-  icon: {fileID: 21300000, guid: 233f06765617cc84abd3e2a0c59c44e1, type: 3}
-  value: 2
-  Stackable: 1
+  name: SpaceShip
+  quantity: 1
+  icon: {fileID: 21300000, guid: d25cf92dcf8933140a291cc67cc636ba, type: 3}
+  value: 5000
+  Stackable: 0

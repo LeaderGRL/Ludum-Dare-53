@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 9220560744485955463}
+  item: {fileID: 0}
   parentAfterDrag: {fileID: 0}
 --- !u!114 &8776477580847137933
 MonoBehaviour:
