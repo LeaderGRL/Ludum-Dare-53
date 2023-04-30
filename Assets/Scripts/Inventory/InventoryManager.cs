@@ -55,13 +55,43 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitialiseItem(item);
     }
 
+    public void AddToBuilding(Resource item, Building building, int inventoryIndex)
+    {
+        GameObject inventory = buildingsInventories[building][inventoryIndex];
+        AddToBuilding(item, inventory);
+    }
+
+    public void AddToBuilding(Resource item, GameObject inventory)
+    {
+        for (int i = 0; i < inventory.transform.childCount; i++)
+        {
+            InventorySlot slot = inventory.transform.GetChild(i).GetComponent<InventorySlot>();
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot == null)
+            {
+                SpawnNewItem(item, slot);
+                return;
+            }
+        }
+    }
+
     public void AddBuildingInventory(Building building, List<int> inventoriesCapcities)
     {
         List<GameObject> inventories = new List<GameObject>();
         foreach (var capcity in inventoriesCapcities)
         {
+            
             GameObject newInventory = InstantiateInventory(capcity);
             inventories.Add(newInventory);
+            switch (inventories.Count)
+            {
+                case 1:
+                    newInventory.GetComponent<RectTransform>().position = new Vector3(300, 850, 0);
+                    break;
+                case 2:
+                    newInventory.GetComponent<RectTransform>().position = new Vector3(300, 600, 0);
+                    break;
+            }
         }
         buildingsInventories.Add(building, inventories);
         
@@ -72,7 +102,6 @@ public class InventoryManager : MonoBehaviour
         GameObject newInventory = Instantiate(inventoryContainerPrefab, GameObject.Find("Canvas").transform);
         for (int i = 0; i < capacity; i++)
         {
-            Debug.Log("Test");
             Instantiate(slotPrefab, newInventory.transform);
         }
         
