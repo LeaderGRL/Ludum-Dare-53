@@ -9,4 +9,5 @@ public class Resource : ScriptableObject
     public int quantity;
     public SpriteRenderer icon;
     public int value;
+    public bool Stackable;
 }

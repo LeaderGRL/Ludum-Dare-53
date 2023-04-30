@@ -22,7 +22,7 @@ public class Interaction : MonoBehaviour
             if (hit.collider.gameObject.tag == "Interactable")
             {
                 interactableObject = hit.transform.gameObject;
-                interactableObject.GetComponent<Outline>().enabled = true;
+                interactableObject.GetComponent<Outline>().enabled = true; 
             }
 
             if (Input.GetMouseButtonDown(0))
