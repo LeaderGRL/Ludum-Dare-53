@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -12,9 +11,19 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public Resource item;
     [HideInInspector] public Transform parentAfterDrag;
 
+    private InventoryUtils _inventoryUtils = InventoryUtils.GetInventoryUtils();
+    private Resource randomResource;
+    private Resource actualShowedResource = null;
+    private bool spaceSheetStatsShow;
+
     private void Start()
     {
         //InitialiseItem(item);
+    }
+
+    private void FixedUpdate()
+    {
+        // Debug.Log("Debug spécial: " + actualShowedResource.id);
     }
 
     public void InitialiseItem(Resource newItem)
@@ -43,18 +52,25 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //Print the name of the GameObject clicked
         if (item == null)
         {
             return;
         }
         
-        switch(item.name)
+        switch(item.type)
         {
-            case "SpaceShip": 
-                Debug.Log("test"); //DISPLAY UI -> GetStats
+            case "SpaceShip":
+                if (!item.Equals(actualShowedResource))
+                {
+                    actualShowedResource = item;
+                    _inventoryUtils.SpaceSheepInterface(item, true);
+                }
+                else
+                {
+                    actualShowedResource = null;
+                    _inventoryUtils.SpaceSheepInterface(item, false);
+                }
                 break;
         }
-        Debug.Log(gameObject.name);
     }
 }

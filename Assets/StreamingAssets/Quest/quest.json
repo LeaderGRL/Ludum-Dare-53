@@ -322,5 +322,39 @@
       "xp": 20,
       "gold": 300
     }
+  },
+  {
+    "name": "I need your help, Bob",
+    "id": 19,
+    "description": "Bob needs your help ! He needs 24 wood",
+    "levelRequired": 2,
+    "materials": {
+      "wood": 24
+    },
+    "destination": {
+      "planet": ""
+    },
+    "once": false,
+    "reward": {
+      "xp": 20,
+      "gold": 300
+    }
+  },
+  {
+    "name": "10",
+    "id": 20,
+    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
+    "levelRequired": 1,
+    "materials": {
+      "uranium": 10
+    },
+    "once": false,
+    "destination": {
+      "planet": ""
+    },
+    "reward": {
+      "xp": 20,
+      "gold": 300
+    }
   }
 ]

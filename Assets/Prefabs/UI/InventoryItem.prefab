@@ -137,3 +137,4 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  inventoryUtils: {fileID: 0}
