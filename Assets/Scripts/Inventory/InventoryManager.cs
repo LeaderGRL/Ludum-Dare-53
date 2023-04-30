@@ -5,8 +5,11 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager instance;
-    [SerializeField] private GameObject spaceShipInventoryContainer; 
+    [SerializeField] private GameObject spaceShipInventoryContainer;
+    [SerializeField] private GameObject inventoryContainerPrefab;
+    [SerializeField] private GameObject slotPrefab;
     private List<InventorySlot> items = new List<InventorySlot>();
+    private Dictionary<Building, List<GameObject>> buildingsInventories;
 
     public GameObject inventoryItemPrefab;
 
@@ -25,8 +28,9 @@ public class InventoryManager : MonoBehaviour
         for (var i = 0; i < spaceShipInventoryContainer.transform.childCount; i++)
         {
             items.Add(spaceShipInventoryContainer.transform.GetChild(i).GetComponent<InventorySlot>());
-
         }
+        buildingsInventories = new Dictionary<Building, List<GameObject>>();
+        
     }
 
     public void Add(Resource item)
@@ -51,6 +55,29 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitialiseItem(item);
     }
 
+    public void AddBuildingInventory(Building building, List<int> inventoriesCapcities)
+    {
+        List<GameObject> inventories = new List<GameObject>();
+        foreach (var capcity in inventoriesCapcities)
+        {
+            GameObject newInventory = InstantiateInventory(capcity);
+            inventories.Add(newInventory);
+        }
+        buildingsInventories.Add(building, inventories);
+        
+    }
+
+    public GameObject InstantiateInventory(int capacity)
+    {
+        GameObject newInventory = Instantiate(inventoryContainerPrefab, GameObject.Find("Canvas").transform);
+        for (int i = 0; i < capacity; i++)
+        {
+            Debug.Log("Test");
+            Instantiate(slotPrefab, newInventory.transform);
+        }
+        
+        return newInventory;
+    }
     //public void Remove(Resource item)
     //{
     //    for (var i = 0; i < spaceShipInventoryContainer.transform.childCount; i++)
