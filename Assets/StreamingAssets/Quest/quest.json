@@ -6,7 +6,7 @@
     "levelRequired": 1,
     "once": true,
     "materials": {
-      "petrol": 1
+      "none": 0
     },
     "destination": {
       "planet": ""
@@ -23,7 +23,7 @@
     "levelRequired": 1,
     "once": true,
     "materials": {
-      "petrol": 0
+      "none": 0
     },
     "destination": {
       "planet": ""
@@ -40,7 +40,7 @@
     "levelRequired": 1,
     "once": true,
     "materials": {
-      "petrol": 0
+      "none": 0
     },
     "destination": {
       "planet": ""
@@ -57,7 +57,7 @@
     "levelRequired": 1,
     "once": true,
     "materials": {
-      "petrol": 0
+      "none": 0
     },
     "destination": {
       "planet": ""
@@ -74,10 +74,10 @@
     "levelRequired": 1,
     "once": true,
     "materials": {
-      "petrol": 0
+      "none": 0
     },
     "destination": {
-      "planet": ""
+      "planet": "Vespera"
     },
     "reward": {
       "xp": 1,
