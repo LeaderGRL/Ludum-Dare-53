@@ -7,6 +7,6 @@ public interface IBuyable
     public int price { get; }
     public void Buy()
     {
-        //PlayerManager.instance.LoseMoney(price);
+        PlayerManager.instance.LoseMoney(price);
     }
 }
