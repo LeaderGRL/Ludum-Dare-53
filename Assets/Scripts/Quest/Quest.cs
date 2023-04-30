@@ -48,8 +48,8 @@ public class Quest : MonoBehaviour
         GameObject text = Instantiate(textPrefab, parentOfChild.transform);
         text.GetComponentInChildren<TMP_Text>().text = quest.name;
         parentOfChild.GetComponent<RectTransform>().sizeDelta = new Vector2(0,
-            parent.GetComponent<RectTransform>().sizeDelta.y +
-            parent.GetComponent<GridLayoutGroup>().cellSize.y);
+            parentOfChild.GetComponent<RectTransform>().sizeDelta.y +
+            parentOfChild.GetComponent<GridLayoutGroup>().cellSize.y);
         return text;
     }
 
@@ -180,12 +180,12 @@ public class Quest : MonoBehaviour
             {
                 quest.materials[material.Key] -= material.Value;
             }
+
             quests[i] = quest;
         }
     }
-    
-        
-    
+
+
     public void LevelUp()
     {
         PlayerManager.instance.AddExperience(100);
