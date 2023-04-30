@@ -1,98 +1,224 @@
 [
   {
-    "name": "I need your help, Bob",
-    "description": "Bob needs your help ! He needs 24 wood",
+    "name": "Precious Cargo",
+    "id": 1,
+    "description": "A valuable and rare mineral has been discovered on a distant planet, and your mission is to transport it to an HQ.",
     "levelRequired": 2,
-    "material": "wood",
-    "target": 24,
+    "material": {
+      "uranium": 50
+    },
+    "destination": {
+      "planet": ""
+    },
+    "reward": {
+      "xp": 20,
+      "gold": 300
+    }
+
+  },
+  {
+    "name": "Ancient Artifacts",
+    "id": 2,
+    "description": "You must transport a collection of ancient artifacts from a planet to a museum. The artifacts are priceless and must be protected from pirates and other dangers.",
+    "levelRequired": 2,
+    "material": {
+      "artifacts": 50
+    },
+    "destination": {
+      "planet": ""
+    },
     "reward": {
       "xp": 20,
       "gold": 300
     }
   },
   {
-    "name": "10",
-    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
-    "levelRequired": 3,
-    "material": "uranium",
-    "target": 10,
+    "name": "Energy Crisis",
+    "id": 3,
+    "description": "A planet is experiencing an energy crisis, and its inhabitants are in danger. You must transport a large supply of petrol to the planet to prevent a catastrophe.",
+    "levelRequired": 2,
+    "material": {
+      "petrol": 50
+    },
+    "destination": {
+      "planet": ""
+    },
     "reward": {
       "xp": 20,
       "gold": 300
     }
   },
   {
-    "name": "10",
-    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
-    "levelRequired": 1,
-    "material": "uranium",
-    "target": 10,
+    "name": "Construction Site",
+    "id": 4,
+    "description": "A colony on a distant planet needs iron to expand its infrastructure. You must transport the iron safely to the colony to aid in its development.",
+    "levelRequired": 2,
+    "material": {
+      "iron": 50
+    },
+    "destination": {
+      "planet": ""
+    },
     "reward": {
       "xp": 20,
       "gold": 300
     }
   },
   {
-    "name": "10",
-    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
-    "levelRequired": 1,
-    "material": "uranium",
-    "target": 10,
+    "name": "Gemstone Heist",
+    "id": 5,
+    "description": "A wealthy customer has bought some jewellery. You must transport the jewellery safely and protect it from thieves.",
+    "levelRequired": 2,
+    "material": {
+      "gemstones": 50
+    },
+    "destination": {
+      "planet": ""
+    },
     "reward": {
       "xp": 20,
       "gold": 300
     }
   },
   {
-    "name": "10",
-    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
-    "levelRequired": 1,
-    "material": "uranium",
-    "target": 10,
+    "name": "Crystal Cavern",
+    "id": 6,
+    "description": "A planet has a network of crystal caverns that contain rare and valuable crystals. You must transport the crystals to a processing facility.",
+    "levelRequired": 2,
+    "material": {
+      "crystal": 50
+    },
+    "destination": {
+      "planet": ""
+    },
     "reward": {
       "xp": 20,
       "gold": 300
     }
   },
   {
-    "name": "10",
-    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
-    "levelRequired": 1,
-    "material": "uranium",
-    "target": 10,
+    "name": "Gemstone Cache",
+    "id": 7,
+    "description": "Une planète possède une série de géodes qui contiennent des pierres précieuses. Vous devez transporter les pierres précieuses vers un centre de traitement sans les endommager.",
+    "levelRequired": 2,
+    "material": {
+      "gemstones": 50
+    },
+    "destination": {
+      "planet": ""
+    },
     "reward": {
       "xp": 20,
       "gold": 300
     }
   },
   {
-    "name": "10",
-    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
-    "levelRequired": 1,
-    "material": "uranium",
-    "target": 10,
+    "name": "Salt Mine",
+    "id": 8,
+    "description": "A planet has a rich deposit of salt that is needed for a colony's food supply. You must excavate and transport the salt to the colony.",
+    "levelRequired": 2,
+    "material": {
+      "salt": 50
+    },
+    "destination": {
+      "planet": ""
+    },
     "reward": {
       "xp": 20,
       "gold": 300
     }
   },
   {
-    "name": "10",
-    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
-    "levelRequired": 1,
-    "material": "uranium",
-    "target": 10,
+    "name": "Coal Extraction",
+    "id": 9,
+    "description": "A planet has a large supply of coal that is needed for an industrial facility. You must excavate and transport the coal to the facility.",
+    "levelRequired": 2,
+    "material": {
+      "coal": 50
+    },
+    "destination": {
+      "planet": ""
+    },
     "reward": {
       "xp": 20,
       "gold": 300
     }
   },
   {
-    "name": "10",
-    "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
-    "levelRequired": 1,
-    "material": "uranium",
-    "target": 10,
+    "name": "Refueling Run",
+    "id": 10,
+    "description": "A remote planet has a large deposit of petrol that is needed to power a research facility. You must transport the petrol to the facility.",
+    "levelRequired": 2,
+    "material": {
+      "petrol": 50
+    },
+    "destination": {
+      "planet": ""
+    },
+    "reward": {
+      "xp": 20,
+      "gold": 300
+    }
+  },
+  {
+    "name": "Ancient Discovery",
+    "id": 11,
+    "description": "A team of archaeologists has discovered an ancient artifact on a distant planet. You must transport the artifact back to a research facility for analysis.",
+    "levelRequired": 2,
+    "material": {
+      "artifacts": 50
+    },
+    "destination": {
+      "planet": ""
+    },
+    "reward": {
+      "xp": 20,
+      "gold": 300
+    }
+  },
+  {
+    "name": "Stolen Treasure",
+    "id": 12,
+    "description": "A valuable artifact has been stolen from a museum, and you must transport it back to the museum without being caught by the thieves.",
+    "levelRequired": 2,
+    "material": {
+      "artifacts": 50
+    },
+    "destination": {
+      "planet": ""
+    },
+    "reward": {
+      "xp": 20,
+      "gold": 300
+    }
+  },
+  {
+    "name": "Resource Redistribution",
+    "id": 13,
+    "description": "A colony on a planet is experiencing an imbalance of crystal, and the crystal need to be relocated to different areas. You must transport the resources.",
+    "levelRequired": 2,
+    "material": {
+      "crystal": 50
+    },
+    "destination": {
+      "planet": ""
+    },
+    "reward": {
+      "xp": 20,
+      "gold": 300
+    }
+  },
+  {
+    "name": "Metal Expedition",
+    "id": 14,
+    "description": "A planet has a deposit of a rare metal that is needed for a new spacecraft. You must transport the metal to a spacecraft manufacturing facility.",
+    "levelRequired": 2,
+    "material": {
+      "iron": 50
+    },
+    "destination": {
+      "planet": ""
+    },
     "reward": {
       "xp": 20,
       "gold": 300
