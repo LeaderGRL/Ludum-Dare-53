@@ -29,7 +29,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void Add(Resource item)
+    public bool Add(Resource item)
     {
         for (int i = 0; i <= items.Count; i++)
         {
@@ -38,10 +38,11 @@ public class InventoryManager : MonoBehaviour
             if (itemInSlot == null)
             {
                 SpawnNewItem(item, slot);
-                return;
+                return true;
             }
             
         }
+        return false;
     }
     
     public void SpawnNewItem(Resource item, InventorySlot slot)
@@ -50,6 +51,8 @@ public class InventoryManager : MonoBehaviour
         InventoryItem inventoryItem = newItem.GetComponent<InventoryItem>();
         inventoryItem.InitialiseItem(item);
     }
+
+    
 
     //public void Remove(Resource item)
     //{
