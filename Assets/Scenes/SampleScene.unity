@@ -10053,7 +10053,7 @@ GameObject:
   - component: {fileID: 609910131}
   - component: {fileID: 609910130}
   m_Layer: 0
-  m_Name: Planet
+  m_Name: Xenoth
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

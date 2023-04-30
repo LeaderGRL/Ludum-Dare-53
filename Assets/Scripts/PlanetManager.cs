@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlanetManager : MonoBehaviour
 {
-    public static PlayerManager instance;
-    void Start()
-    {
-        
-    }
+    public static PlanetManager instance;
+    public List<Planet> planets = new List<Planet>();
 
-    void Update()
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+    void Start()
     {
         
     }

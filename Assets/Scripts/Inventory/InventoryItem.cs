@@ -51,8 +51,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         
         switch(item.name)
         {
-            case "SpaceShip":
-                Debug.Log("test"); //DISPLAY UI
+            case "SpaceShip": 
+                Debug.Log("test"); //DISPLAY UI -> GetStats
                 break;
         }
         Debug.Log(gameObject.name);

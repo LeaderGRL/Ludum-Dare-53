@@ -27,6 +27,7 @@ public class Interaction : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                
                 // AFFICHER L'UI
             }
         }
@@ -39,6 +40,11 @@ public class Interaction : MonoBehaviour
             }
             
         }
+    }
+
+    private void DisplayPlanetUI(string planetName)
+    {
+        
     }
 }
 
