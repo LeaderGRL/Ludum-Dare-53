@@ -42,7 +42,8 @@ public class ShipsManager : MonoBehaviour
         {
             return;
         }
-        ships.Add(new ShipStats());
+        ShipStats newShip = new ShipStats();
+        ships.Add(newShip);
         ShipsUiManager.Instance.AddShip();
     }
 

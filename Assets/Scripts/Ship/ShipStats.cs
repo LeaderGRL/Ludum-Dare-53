@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ShipStats
 {
-
     public bool Available;
     public string Position;
     public Dictionary<string, Module> modulesDict;

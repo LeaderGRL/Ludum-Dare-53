@@ -237,4 +237,9 @@ public class Quest : MonoBehaviour
             ShowQuest();
         }
     }
+
+    public JSON.Data[] GetQuests()
+    {
+        return quests;
+    }
 }
