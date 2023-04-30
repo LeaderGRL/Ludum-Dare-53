@@ -13,6 +13,8 @@ public class ShipsManager : MonoBehaviour
 
     public static GameObject Instance;
 
+    public int selected;
+
     private void Awake()
     {
         if (_instance != null)
@@ -27,6 +29,7 @@ public class ShipsManager : MonoBehaviour
     void Start()
     {
         MaxShip = 1;
+        selected = -1;
         ships = new List<ShipStats>
         {
             new ShipStats()
@@ -54,6 +57,21 @@ public class ShipsManager : MonoBehaviour
             return;
         }
         ships[index].Available = false;
+    }
+
+    public void UpgradeModuleLevel(int index, string moduleName)
+    {
+        ships[index].UpgradeModuleLevel(moduleName);
+    }
+
+    public void SelectShip(int index)
+    {
+        selected = index;
+    }
+
+    public void UnSelectShip()
+    {
+        selected = -1;
     }
 
 }

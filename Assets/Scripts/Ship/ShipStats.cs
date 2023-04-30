@@ -9,6 +9,19 @@ public class ShipStats
     public bool Available;
     public Dictionary<string, Module> modulesDict;
 
+    private float _fuel;
+    public float Fuel
+    {
+        get { return _fuel; }
+        set {
+            if (value >= modulesDict["Tank"].Stat)
+            {
+                _fuel = modulesDict["Tank"].Stat;
+                return;
+            }
+            _fuel = value; 
+        }
+    }
 
     public ShipStats()
     {
