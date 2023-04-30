@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 public class JSON
 {
     public static T  Reader<T>(string path)
