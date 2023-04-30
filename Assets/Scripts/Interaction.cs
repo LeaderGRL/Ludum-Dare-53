@@ -8,6 +8,9 @@ public class Interaction : MonoBehaviour
     public Camera cam;
     Ray ray;
     RaycastHit hit;
+    
+    private InventoryUtils inventoryUtils = InventoryUtils.GetInventoryUtils();
+    
     void Start()
     {
         

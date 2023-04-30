@@ -7,11 +7,17 @@ public class InventoryUtils : MonoBehaviour
 
     private static InventoryUtils _instance;
 
-    [Header("Ship Interface")]
+    [SerializeField] private CanvasGroup mainGui;
+
     [SerializeField] private CanvasGroup shipInterface;
     [SerializeField] private TMP_Text level;
-    [SerializeField] private TMP_Text planet;
+    [SerializeField] private TMP_Text shipPlanetName;
     [SerializeField] private Slider fuelLevel;
+
+    [SerializeField] private CanvasGroup planetInterface;
+    [SerializeField] private TMP_Text planetName;
+    [SerializeField] private TMP_Text planetRotationSpeed;
+
 
     private void Awake()
     {
@@ -37,7 +43,7 @@ public class InventoryUtils : MonoBehaviour
             shipInterface.blocksRaycasts = true;
 
             level.text = "SpaceSheep";
-            planet.text = spaceSheep.currentLocation;
+            shipPlanetName.text = spaceSheep.currentLocation;
             fuelLevel.value = spaceSheep.fuelLevel;
         }
         else
@@ -51,6 +57,36 @@ public class InventoryUtils : MonoBehaviour
     public void AssignMission(int value)
     {
         
+    }
+    
+    /*
+     * Planet Interface
+     */
+    public void PlanetInterface(Planet planet, bool show)
+    {
+        if (show)
+        {
+            mainGui.alpha = 0;
+            mainGui.interactable = false;
+            mainGui.blocksRaycasts = false;
+
+            planetName.text = planet.name;
+            planetRotationSpeed.text = planet.RotationSpeed.ToString();
+            
+            planetInterface.alpha = 1;
+            planetInterface.interactable = true;
+            planetInterface.blocksRaycasts = true;
+        }
+        else
+        {
+            planetInterface.alpha = 0;
+            planetInterface.interactable = false;
+            planetInterface.blocksRaycasts = false;
+            
+            mainGui.alpha = 1;
+            mainGui.interactable = true;
+            mainGui.blocksRaycasts = true;
+        }
     }
 
     public static InventoryUtils GetInventoryUtils()
