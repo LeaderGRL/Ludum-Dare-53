@@ -8,7 +8,21 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     [Header("UI")]
     public Image image;
+
+    [HideInInspector] public Resource item;
     [HideInInspector] public Transform parentAfterDrag;
+
+    private void Start()
+    {
+        //InitialiseItem(item);
+    }
+
+    public void InitialiseItem(Resource newItem)
+    {
+        //Debug.Log(newItem.icon.name);
+        item = newItem;
+        image.sprite = newItem.icon;
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         image.raycastTarget = false;

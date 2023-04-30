@@ -7,7 +7,7 @@ public class Resource : ScriptableObject
 {
     public string name;
     public int quantity;
-    public SpriteRenderer icon;
+    public Sprite icon;
     public int value;
     public bool Stackable;
 }
