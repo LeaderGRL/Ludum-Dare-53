@@ -31,15 +31,17 @@ public class Quest : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            quests = JSON.Reader<JSON.Data[]>("/Quest/quest.json");
             return;
         }
 
         Destroy(gameObject);
+        
     }
 
     private void Start()
     {
-        quests = JSON.Reader<JSON.Data[]>("/Quest/quest.json");
+        
         ShowQuest();
     }
 
@@ -123,6 +125,7 @@ public class Quest : MonoBehaviour
 
                         ShowQuestInProgress();
                         ShowQuest();
+                        GameObject.Find("DropdownChooseQuest").GetComponent<ShipChooseQuest>().UpdateSelections();
                     });
                 });
             }
@@ -189,6 +192,7 @@ public class Quest : MonoBehaviour
     public void LevelUp()
     {
         PlayerManager.instance.AddExperience(100);
+        Debug.Log(PlayerManager.instance.GetLevel());
         ShowQuest();
     }
 
