@@ -10,11 +10,12 @@ public class PlayerManager : MonoBehaviour
     private int experience = 0;
     private int money = 0;
     private int nbrSpaceShip = 0;
-    private int nbrUranium = 0;
-    private int nbrArtifacts = 0;
-    private int nbrPatrol = 0;
-    private int nbrIron = 0;
-    private int nbrGemStone = 0;
+
+    [SerializeField] private Resource uranium;
+    [SerializeField] private Resource artifact;
+    [SerializeField] private Resource oil;
+    [SerializeField] private Resource Iron;
+    [SerializeField] private Resource GemStone;
 
     private void Awake()
     {
@@ -25,9 +26,14 @@ public class PlayerManager : MonoBehaviour
         }
         instance = this;
     }
+
+    private void test()
+    {
+        uranium.quantity = 1000000;
+    }
     private void Start()
     {
-        player = new Player(level, experience, money, nbrSpaceShip, nbrUranium, nbrArtifacts, nbrPatrol, nbrIron, nbrGemStone);
+        player = new Player(level, experience, money, nbrSpaceShip, uranium.quantity, artifact.quantity, oil.quantity, Iron.quantity, GemStone.quantity);
     }
     public void AddExperience(int experienceToAdd)
     {
@@ -48,23 +54,60 @@ public class PlayerManager : MonoBehaviour
     }
     public void AddUranium(int nbrUraniumToAdd)
     {
-        nbrUranium += nbrUraniumToAdd;
+        uranium.quantity += nbrUraniumToAdd;
     }
     public void AddArtifacts(int nbrArtifactsToAdd)
     {
-        nbrArtifacts += nbrArtifactsToAdd;
+        artifact.quantity += nbrArtifactsToAdd;
     }
     public void AddPatrol(int nbrPatrolToAdd)
     {
-        nbrPatrol += nbrPatrolToAdd;
+        oil.quantity += nbrPatrolToAdd;
     }
     public void AddIron(int nbrIronToAdd)
     {
-        nbrIron += nbrIronToAdd;
+        Iron.quantity += nbrIronToAdd;
     }
     public void AddGemStone(int nbrGemStoneToAdd)
     {
-        nbrGemStone += nbrGemStoneToAdd;
+        GemStone.quantity += nbrGemStoneToAdd;
+    }
+
+    public void LoseMoney(int money)
+    {
+        this.money -= money;
+    }
+    public void LoseSpaceShip(int nbrSpaceShip)
+    {
+        this.nbrSpaceShip -= nbrSpaceShip;
+    }
+    public void LoseUranium(int nbrUranium)
+    {
+        uranium.quantity -= nbrUranium;
+    }
+    public void LoseArtifacts(int nbrArtifacts)
+    {
+        artifact.quantity -= nbrArtifacts;
+    }
+    public void LosePatrol(int nbrPatrol)
+    {
+        oil.quantity -= nbrPatrol;
+    }
+    public void LoseIron(int nbrIron)
+    {
+        Iron.quantity -= nbrIron;
+    }
+    public void LoseGemStone(int nbrGemStone)
+    {
+        GemStone.quantity -= nbrGemStone;
+    }
+
+    public void SellUranium(int nbrUranium)
+    {
+        if (player.nbrUranium >= nbrUranium)
+        {
+
+        }
     }
 
     public int GetLevel()
@@ -85,28 +128,22 @@ public class PlayerManager : MonoBehaviour
     }
     public int GetNbrUranium()
     {
-        return nbrUranium;
+        return uranium.quantity;
     }
     public int GetNbrArtifacts()
     {
-        return nbrArtifacts;
+        return artifact.quantity;
     }
     public int GetNbrPatrol()
     {
-        return nbrPatrol;
+        return oil.quantity;
     }
     public int GetNbrIron()
     {
-        return nbrIron;
+        return Iron.quantity;
     }
     public int GetNbrGemStone()
     {
-        return nbrGemStone;
-    }
-
-    public Player GetPlayer()
-    {
-        return player;
+        return GemStone.quantity;
     }
 }
-
