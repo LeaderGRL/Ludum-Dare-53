@@ -31,12 +31,13 @@ public class InventoryManager : MonoBehaviour
 
     public void Add(Resource item)
     {
-        for (int i = 0; i <= items.Count; i++)
+        for (var i = 0; i <= items.Count; i++)
         {
-            InventorySlot slot = items[i];
-            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            var slot = items[i];
+            var itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot == null)
             {
+                item.id = i+1;
                 SpawnNewItem(item, slot);
                 return;
             }
