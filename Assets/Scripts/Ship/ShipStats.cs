@@ -7,7 +7,9 @@ public class ShipStats
 {
 
     public bool Available;
+    public string Position;
     public Dictionary<string, Module> modulesDict;
+    public JSON.Data? AssignedQuest;
 
     private float _fuel;
     public float Fuel
@@ -37,6 +39,7 @@ public class ShipStats
 
             modulesDict.Add(moduleDatas[i].name, newModule);
         }
+        AssignedQuest = null;
     }
 
     public void UpgradeModuleLevel(string moduleName)
@@ -61,6 +64,7 @@ public class ShipStats
         }
     }
 
+    
     
     public override string ToString()
     {
