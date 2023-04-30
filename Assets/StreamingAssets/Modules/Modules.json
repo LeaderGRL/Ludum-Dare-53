@@ -1,0 +1,44 @@
+﻿[
+  {
+    "name": "Reactor",
+    "levels": {
+      "level_1": 5,
+      "level_2": 10,
+      "level_3": 15
+    }
+  },
+  {
+    "name": "Storage",
+    "levels":{
+      "level_1": 10,
+      "level_2": 20,
+      "level_3": 40
+    }
+  },
+  {
+    "name": "Tank",
+    "levels": {
+      "level_1": 250,
+      "level_2": 400,
+      "level_3": 800
+    }
+  },
+  {
+    "name": "Shield",
+    "levels": {
+      "level_1": 10,
+      "level_2": 20,
+      "level_3": 30
+    }
+    
+  },
+  {
+    "name": "Weapons",
+    "levels": {
+      "level_1": 5,
+      "level_2": 10,
+      "level_3": 15
+    }
+    
+  }
+]
