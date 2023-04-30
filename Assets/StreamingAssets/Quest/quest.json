@@ -1,7 +1,55 @@
 [
   {
-    "name": "Precious Cargo",
+    "name": "First spaceship",
     "id": 1,
+    "description": "You have been tasked with purchasing your very own spaceship for the first time. Good luck!",
+    "levelRequired": 1,
+    "material": {
+      "none": 0
+    },
+    "destination": {
+      "planet": ""
+    },
+    "reward": {
+      "xp": 1,
+      "gold": 0
+    }
+  },
+  {
+    "name": "Station Acquisition",
+    "id": 2,
+    "description": "You have been tasked with acquiring a space station for your organization. Good luck on your mission!",
+    "levelRequired": 1,
+    "material": {
+      "none": 0
+    },
+    "destination": {
+      "planet": ""
+    },
+    "reward": {
+      "xp": 1,
+      "gold": 0
+    }
+  },
+  {
+    "name": "The Deep Drill Dig",
+    "id": 3,
+    "description": "Your organization needs a new mining drill to extract valuable resources from a remote planet. Best of luck on your mission!",
+    "levelRequired": 1,
+    "material": {
+      "none": 0
+    },
+    "destination": {
+      "planet": ""
+    },
+    "reward": {
+      "xp": 1,
+      "gold": 0
+    }
+  },
+  {
+    "name": "Precious Cargo",
+    "id": 4,
     "description": "A valuable and rare mineral has been discovered on a distant planet, and your mission is to transport it to an HQ.",
     "levelRequired": 2,
     "material": {
@@ -18,7 +66,7 @@
   },
   {
     "name": "Ancient Artifacts",
-    "id": 2,
+    "id": 5,
     "description": "You must transport a collection of ancient artifacts from a planet to a museum. The artifacts are priceless and must be protected from pirates and other dangers.",
     "levelRequired": 2,
     "material": {
@@ -34,7 +82,7 @@
   },
   {
     "name": "Energy Crisis",
-    "id": 3,
+    "id": 6,
     "description": "A planet is experiencing an energy crisis, and its inhabitants are in danger. You must transport a large supply of petrol to the planet to prevent a catastrophe.",
     "levelRequired": 2,
     "material": {
@@ -50,7 +98,7 @@
   },
   {
     "name": "Construction Site",
-    "id": 4,
+    "id": 7,
     "description": "A colony on a distant planet needs iron to expand its infrastructure. You must transport the iron safely to the colony to aid in its development.",
     "levelRequired": 2,
     "material": {
@@ -66,7 +114,7 @@
   },
   {
     "name": "Gemstone Heist",
-    "id": 5,
+    "id": 8,
     "description": "A wealthy customer has bought some jewellery. You must transport the jewellery safely and protect it from thieves.",
     "levelRequired": 2,
     "material": {
@@ -82,7 +130,7 @@
   },
   {
     "name": "Crystal Cavern",
-    "id": 6,
+    "id": 9,
     "description": "A planet has a network of crystal caverns that contain rare and valuable crystals. You must transport the crystals to a processing facility.",
     "levelRequired": 2,
     "material": {
@@ -98,7 +146,7 @@
   },
   {
     "name": "Gemstone Cache",
-    "id": 7,
+    "id": 10,
     "description": "Une planète possède une série de géodes qui contiennent des pierres précieuses. Vous devez transporter les pierres précieuses vers un centre de traitement sans les endommager.",
     "levelRequired": 2,
     "material": {
@@ -114,7 +162,7 @@
   },
   {
     "name": "Salt Mine",
-    "id": 8,
+    "id": 11,
     "description": "A planet has a rich deposit of salt that is needed for a colony's food supply. You must excavate and transport the salt to the colony.",
     "levelRequired": 2,
     "material": {
@@ -130,7 +178,7 @@
   },
   {
     "name": "Coal Extraction",
-    "id": 9,
+    "id": 12,
     "description": "A planet has a large supply of coal that is needed for an industrial facility. You must excavate and transport the coal to the facility.",
     "levelRequired": 2,
     "material": {
@@ -146,7 +194,7 @@
   },
   {
     "name": "Refueling Run",
-    "id": 10,
+    "id": 13,
     "description": "A remote planet has a large deposit of petrol that is needed to power a research facility. You must transport the petrol to the facility.",
     "levelRequired": 2,
     "material": {
@@ -162,7 +210,7 @@
   },
   {
     "name": "Ancient Discovery",
-    "id": 11,
+    "id": 14,
     "description": "A team of archaeologists has discovered an ancient artifact on a distant planet. You must transport the artifact back to a research facility for analysis.",
     "levelRequired": 2,
     "material": {
@@ -178,7 +226,7 @@
   },
   {
     "name": "Stolen Treasure",
-    "id": 12,
+    "id": 15,
     "description": "A valuable artifact has been stolen from a museum, and you must transport it back to the museum without being caught by the thieves.",
     "levelRequired": 2,
     "material": {
@@ -210,7 +258,7 @@
   },
   {
     "name": "Metal Expedition",
-    "id": 14,
+    "id": 16,
     "description": "A planet has a deposit of a rare metal that is needed for a new spacecraft. You must transport the metal to a spacecraft manufacturing facility.",
     "levelRequired": 2,
     "material": {
