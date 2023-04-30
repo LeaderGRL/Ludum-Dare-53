@@ -19,6 +19,8 @@ public class JSON
         public float time;
         public bool inProgress;
         public int id;
+        public bool once;
+        public bool done;
         public Dictionary<string, int> materials;
         public Dictionary<string, string> destination;
     }

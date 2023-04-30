@@ -8,8 +8,9 @@
       "wood": 24
     },
     "destination": {
-      "planet": "" 
+      "planet": ""
     },
+    "once": true,
     "reward": {
       "xp": 20,
       "gold": 300
@@ -23,6 +24,7 @@
     "materials": {
       "uranium": 10
     },
+    "once": false,
     "destination": {
       "planet": ""
     },
