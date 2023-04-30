@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [Header("UI")]
     public Image image;
+    public GameObject countText;
 
     [HideInInspector] public Resource item;
     [HideInInspector] public Transform parentAfterDrag;
+    [HideInInspector] public int count = 1;
 
     private void Start()
     {
@@ -22,6 +25,19 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         //Debug.Log(newItem.icon.name);
         item = newItem;
         image.sprite = newItem.icon;
+        if (item.Stackable)
+        {
+            RefreshCount();
+        }
+        else
+        {
+            countText.gameObject.SetActive(false);
+        }
+    }
+    
+    public void RefreshCount()
+    {
+        countText.GetComponent<TextMeshPro>().text = count.ToString();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
