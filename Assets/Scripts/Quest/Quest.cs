@@ -16,6 +16,7 @@ public class Quest : MonoBehaviour
     [SerializeField] private GameObject DestinationText;
     [SerializeField] private GameObject materialsText;
     [SerializeField] private GameObject acceptButton;
+    [SerializeField] private GameObject parentInProgress;
 
 
     private int nPage = 0;
@@ -29,6 +30,33 @@ public class Quest : MonoBehaviour
         ShowQuest();
     }
 
+    private GameObject InstantiateQuest(JSON.Data quest, GameObject parentOfChild) 
+    {
+        GameObject text = Instantiate(textPrefab, parentOfChild.transform);
+        text.GetComponentInChildren<TMP_Text>().text = quest.name;
+        parentOfChild.GetComponent<RectTransform>().sizeDelta = new Vector2(0,
+            parent.GetComponent<RectTransform>().sizeDelta.y +
+            parent.GetComponent<GridLayoutGroup>().cellSize.y);
+        return text;
+    }
+
+    private void ShowQuestInProgress()
+    {
+        filteredQuest = filterAcceptQuest(quests, PlayerManager.instance.GetLevel());
+        foreach (Transform child in parentInProgress.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // set the parent transform height to 0
+        parent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+        for (int i = 0; i < filteredQuest.Count; i++)
+        {
+            JSON.Data quest = filteredQuest[i];
+            InstantiateQuest(quest, parentInProgress);
+        }
+    }
+
     private void ShowQuest()
     {
         filteredQuest = filterQuest(quests, PlayerManager.instance.GetLevel());
@@ -38,39 +66,70 @@ public class Quest : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        // set the parent transform height to 0
         parent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
-        for (int i = 0; i < page[nPage].Count; i++)
+        if (page != null && page.Count > nPage)
         {
-            int index = i;
-            JSON.Data quest = page[nPage][i];
-            int id = quest.id;
-            GameObject text = Instantiate(textPrefab, parent.transform);
-            text.GetComponentInChildren<TMP_Text>().text = quest.name;
-            parent.GetComponent<RectTransform>().sizeDelta = new Vector2(0,
-                parent.GetComponent<RectTransform>().sizeDelta.y + parent.GetComponent<GridLayoutGroup>().cellSize.y);
-            text.AddComponent<Button>().onClick.AddListener(() =>
+            for (int i = 0; i < page[nPage].Count; i++)
             {
-                questDetails.SetActive(true);
-                nameText.GetComponent<TMP_Text>().text = "Name : " + quest.name;
-                descText.GetComponent<TMP_Text>().text = "Description : " + quest.description;
-                timeTraverText.GetComponent<TMP_Text>().text = "Time travel : " + quest.time;
-                RewardText.GetComponent<TMP_Text>().text =
-                    "Rewards : " + quest.reward.xp + "xp " + quest.reward.gold + "Nebulite";
-                DestinationText.GetComponent<TMP_Text>().text = "Destination : " + quest.destination["planet"];
-                materialsText.GetComponent<TMP_Text>().text = "Required materials : ";
-                acceptButton.GetComponent<Button>().onClick.AddListener(() =>
+                var quest = new JSON.Data();
+                if (i >= 0 && i < page[nPage].Count)
                 {
-                    quest.inProgress = true;
-                    questDetails.SetActive(false);
-                    quests.SetValue(quest, id);
-                    ShowQuest();
-                });
-                foreach (var material in quest.materials)
-                {
-                    materialsText.GetComponent<TMP_Text>().text += material.Key + " " + material.Value + "\n";
+                    quest = page[nPage][i];
                 }
-            });
+
+                int id = quest.id;
+                GameObject text = InstantiateQuest(quest, parent);
+                text.AddComponent<Button>().onClick.AddListener(() =>
+                {
+                    JSON.Data selectedQuest = quest;
+                    questDetails.SetActive(true);
+                    nameText.GetComponent<TMP_Text>().text = "Name : " + selectedQuest.name;
+                    descText.GetComponent<TMP_Text>().text = "Description : " + selectedQuest.description;
+                    timeTraverText.GetComponent<TMP_Text>().text = "Time travel : " + selectedQuest.time;
+                    RewardText.GetComponent<TMP_Text>().text =
+                        "Rewards : " + selectedQuest.reward.xp + "xp " + selectedQuest.reward.gold + "Nebulite";
+                    DestinationText.GetComponent<TMP_Text>().text =
+                        "Destination : " + selectedQuest.destination["planet"];
+                    materialsText.GetComponent<TMP_Text>().text = "Required materials : ";
+                    foreach (var material in selectedQuest.materials)
+                    {
+                        materialsText.GetComponent<TMP_Text>().text += material.Key + " " + material.Value + "\n";
+                    }
+
+                    acceptButton.GetComponent<Button>().onClick.AddListener(() =>
+                    {
+                        questDetails.SetActive(false);
+                        for (int j = 0; j < quests.Length; j++)
+                        {
+                            if (quests[j].id != id) continue;
+                            selectedQuest.inProgress = true;
+                            quests[j] = selectedQuest;
+                            break;
+                        }
+
+                        ShowQuestInProgress();
+                        ShowQuest();
+                    });
+                });
+            }
         }
+        else
+        {
+            Debug.Log("La liste 'page' est nulle ou ne contient pas assez d'éléments.");
+        }
+    }
+
+    private List<JSON.Data> filterAcceptQuest(JSON.Data[] quests, int level)
+    {
+        List<JSON.Data> filteredQuests = new List<JSON.Data>();
+        foreach (var quest in quests)
+        {
+            if (level < quest.levelRequired || !quest.inProgress) continue;
+            filteredQuests.Add(quest);
+        }
+
+        return filteredQuests;
     }
 
     private List<JSON.Data> filterQuest(JSON.Data[] quests, int level)
@@ -108,9 +167,11 @@ public class Quest : MonoBehaviour
                 {
                     page.Add(filteredQuest[i]);
                 }
+
                 res.Add(page);
                 page = new List<JSON.Data>();
             }
+
             page.Add(filteredQuest[i]);
         }
 
