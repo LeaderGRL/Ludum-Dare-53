@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building
+public class Building : MonoBehaviour
 {
+    protected Planet currentPlanet;
     protected int level;
 
     public Building()
@@ -19,6 +20,11 @@ public class Building
     public void Upgrade()
     {
         level++;
+    }
+
+    public Planet GetCurrentPlanet()
+    {
+        return currentPlanet;
     }
     
     

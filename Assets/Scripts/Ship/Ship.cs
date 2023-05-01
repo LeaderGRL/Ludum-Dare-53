@@ -9,6 +9,8 @@ public class Ship : MonoBehaviour
     private bool collide;
 
     private GameObject startPlanet;
+    private GameObject targetPlanet;
+    
     private string planetName;
 
     public GameObject StartPlanet
@@ -33,8 +35,17 @@ public class Ship : MonoBehaviour
 
     public void SetTarget(string target)
     {
+        targetPlanet = GameObject.Find(target);
         GetComponent<Move>().enabled = true;
-        GetComponent<Move>().target = GameObject.Find(target).transform;
+        GetComponent<Move>().target = targetPlanet.transform;
+        GetComponent<Move>().SetSpeed(5);
+        //GetComponent<Move>().SetSpeed(shipRessource.shipStats.modulesDict["Reactor"].Stat);
+    }
+
+
+    public GameObject GetPlanet()
+    {
+        return targetPlanet;
     }
     //salut ça va eliott ? moi ça va   
     private void OnCollisionEnter(Collision other)

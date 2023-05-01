@@ -28,7 +28,7 @@ public class InventoryUtils : MonoBehaviour
     [Header ("Planet shop")]
     [SerializeField] private CanvasGroup planetShopInterface;
     [SerializeField] private GameObject buyStationButton;
-    [SerializeField] private GameObject buyExtractorButton;
+    [SerializeField] private GameObject buyDrillerButton;
 
     [Header("Planet Structures")]
     [SerializeField] private GameObject structuresGroup;
@@ -193,7 +193,16 @@ public class InventoryUtils : MonoBehaviour
             PlanetInterface(planet, true);
             UnDisplayBuyShipInterface();
         });
-        
+
+        buyDrillerButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        buyDrillerButton.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("Buy Driller!");
+            planet.AddBuilding(new Driller());
+            PlanetInterface(planet, true);
+            UnDisplayBuyShipInterface();
+        });
+
     }
 
     private void UnDisplayBuyShipInterface()

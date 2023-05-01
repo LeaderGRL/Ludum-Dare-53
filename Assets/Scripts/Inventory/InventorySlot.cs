@@ -10,7 +10,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         Debug.Log("test");
         if (transform.childCount == 0)
         {
-            Debug.Log("OUI");
             InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
             inventoryItem.parentAfterDrag = transform;
         }

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Uranium
   quantity: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3f2f3c2814191f4418cb8e6d8695c7ca, type: 3}
   value: 10
   Stackable: 1

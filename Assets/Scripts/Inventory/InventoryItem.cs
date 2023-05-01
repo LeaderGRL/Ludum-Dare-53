@@ -2,14 +2,17 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [Header("UI")]
     public Image image;
+    public GameObject countText;
 
     [HideInInspector] public Resource item;
     [HideInInspector] public Transform parentAfterDrag;
+    [HideInInspector] public int count = 1;
 
     private InventoryUtils inventoryUtils = InventoryUtils.GetInventoryUtils();
 
@@ -23,10 +26,24 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         //Debug.Log(newItem.icon.name);
         item = newItem;
         image.sprite = newItem.icon;
+        if (item.stackable)
+        {
+            RefreshCount();
+        }
+        else
+        {
+            countText.gameObject.SetActive(false);
+        }
+    }
+    
+    public void RefreshCount()
+    {
+        countText.GetComponent<TextMeshProUGUI>().text = count.ToString();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
         image.raycastTarget = false;
+        countText.GetComponent<TextMeshProUGUI>().raycastTarget = false;
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
     }
@@ -40,6 +57,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+        countText.GetComponent<TextMeshProUGUI>().raycastTarget = true;
     }
 
     public void OnPointerClick(PointerEventData eventData)

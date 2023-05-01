@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShipsManager : MonoBehaviour
 {
+    private List<Ship> shipList = new List<Ship>();
     public List<ShipStats> ships;
     public int MaxShip;
 
@@ -76,4 +77,41 @@ public class ShipsManager : MonoBehaviour
         ships[index].Available = true;
     }
 
+
+    //---JOJO---//
+    public List<Ship> GetShipList()
+    {
+        return shipList;
+    }
+
+    public void AddShip(Ship ship)
+    {
+        GetShipList().Add(ship);
+    }
+    
+    public void CalculateAllShipDurationToTarget()
+    {
+        foreach (var ship in GetShipList())
+        {
+            float speed = ship.Resource.shipStats.modulesDict["Reactor"].Stat;
+            var targetPosition = ship.GetPlanet().transform.position;
+
+            float distance = Vector3.Distance(ship.transform.position, targetPosition);
+            float duration = distance / speed;
+            //ship.SetDurationToTarget(duration);
+        }
+    }
+
+    public float CalculateShipDurationToTarget(Ship ship)
+    {
+        
+        float speed = ship.Resource.shipStats.modulesDict["Reactor"].Stat;
+        var targetPosition = ship.GetPlanet().transform.position;
+
+        float distance = Vector3.Distance(ship.transform.position, targetPosition);
+        float duration = distance / speed;
+        return duration;
+         //ship.SetDurationToTarget(duration);
+        
+    }
 }

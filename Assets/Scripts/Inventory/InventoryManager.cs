@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
+    private int maxStack = 64;
+    
     public static InventoryManager instance;
     [SerializeField] private GameObject spaceShipInventoryContainer;
     [SerializeField] private GameObject inventoryContainerPrefab;
@@ -32,14 +34,30 @@ public class InventoryManager : MonoBehaviour
         for (var i = 0; i < spaceShipInventoryContainer.transform.childCount; i++)
         {
             items.Add(spaceShipInventoryContainer.transform.GetChild(i).GetComponent<InventorySlot>());
+
         }
         buildingsInventories = new Dictionary<Building, List<GameObject>>();
         
     }
 
-    public void Add(Resource item)
-    {
-        for (var i = 0; i <= items.Count; i++)
+    public bool Add(Resource item)
+    { 
+        for (int i = 0; i < items.Count; i++)
+        {
+            InventorySlot slot = items[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+            if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < maxStack && itemInSlot.item.stackable == true)
+            {
+                Debug.Log("NOT FULL");
+                itemInSlot.count++;
+                itemInSlot.RefreshCount();
+                return true;
+            }
+
+        }
+
+        for (var i = 0; i < items.Count; i++)
         {
             var slot = items[i];
             var itemInSlot = slot.GetComponentInChildren<InventoryItem>();
@@ -47,10 +65,11 @@ public class InventoryManager : MonoBehaviour
             {
                 item.id = i;
                 SpawnNewItem(item, slot);
-                return;
+                return true;
             }
             
         }
+        return false;
     }
 
     public void ChangeToSpaceShip()
@@ -74,6 +93,8 @@ public class InventoryManager : MonoBehaviour
         InventoryItem inventoryItem = newItem.GetComponent<InventoryItem>();
         inventoryItem.InitialiseItem(item);
     }
+
+    
 
     public void AddToBuilding(Resource item, Building building, int inventoryIndex)
     {
