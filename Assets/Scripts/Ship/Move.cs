@@ -11,6 +11,7 @@ public class Move : MonoBehaviour
     
     void Update() {
         float step = speed * Time.deltaTime;
+        transform.rotation.SetLookRotation(target.position);
         transform.position = Vector3.MoveTowards(transform.position, target.position, step);
     }
 

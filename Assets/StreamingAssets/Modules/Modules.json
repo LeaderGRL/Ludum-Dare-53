@@ -2,9 +2,9 @@
   {
     "name": "Reactor",
     "levels": {
-      "level_1": 5,
-      "level_2": 10,
-      "level_3": 15
+      "level_1": 1,
+      "level_2": 2,
+      "level_3": 3
     }
   },
   {

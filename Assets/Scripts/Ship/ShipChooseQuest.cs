@@ -18,7 +18,6 @@ public class ShipChooseQuest : MonoBehaviour
         RemoveSelections();
         
         int playerLevel = PlayerManager.instance.GetLevel();
-        Debug.Log(Quest.instance.GetQuests());
         List<JSON.Data> quests = Quest.instance.filterAcceptQuest(Quest.instance.GetQuests(), playerLevel);
         foreach (var item in quests)
         {

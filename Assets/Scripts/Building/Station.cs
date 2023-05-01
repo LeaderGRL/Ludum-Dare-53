@@ -22,16 +22,26 @@ public class Station : Building, IBuyable
     {
         // Retirer le vaisseau de l'inventaire
         InventoryManager.instance.RemoveItemFromBuilding(ship, this);
-        GameObject newShip = GameObject.Instantiate(shipPrefab, PlanetManager.instance.PlanetGameObject(this).transform);
+        GameObject newShip = GameObject.Instantiate(shipPrefab);
+        
+        newShip.transform.localScale = Vector3.one * 3;
+        newShip.transform.position = PlanetManager.instance.PlanetGameObject(this).transform.position;
         newShip.GetComponent<Ship>().StartPlanet = PlanetManager.instance.PlanetGameObject(this);
         newShip.GetComponent<Ship>().Resource = ship;
         
     }
 
-    public void RecallShip(GameObject shipPrefab, GameObject startPlanet) 
+    public void RecallShip(GameObject ship, GameObject startPlanet, ShipResource shipResource) 
     {
-        GameObject newShip = GameObject.Instantiate(shipPrefab, startPlanet.transform);
+        GameObject newShip = GameObject.Instantiate(ship);
+        //newShip.transform.parent = null;
+        newShip.transform.localScale = Vector3.one * 3;
+        newShip.transform.position = startPlanet.transform.position;
+
         // A Changer par le bon shipstats
+        newShip.GetComponent<Ship>().Resource = shipResource;
         newShip.GetComponent<Ship>().StartPlanet = startPlanet;
+        newShip.GetComponent<Ship>().SetTarget(PlanetManager.instance.PlanetGameObject(this).name);
+
     }
 }

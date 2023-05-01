@@ -82,6 +82,7 @@ public class InventoryUtils : MonoBehaviour
 
             string questName = "";
             
+            sendButton.onClick.RemoveAllListeners();
             sendButton.onClick.AddListener(() =>
             {
                 if (dropdown.options.Count > 0)
@@ -100,12 +101,9 @@ public class InventoryUtils : MonoBehaviour
                 
 
                 Station station = (Station)shipResource.building;
-                Debug.Log("Quest is null: " + (quest == null).ToString());
-                Debug.Log("shipResource is null: " + (shipResource == null).ToString());
-                Debug.Log("shipResource is null: " + (shipResource.shipStats == null).ToString());
                 shipResource.shipStats.SetAssignedQuest(quest);
                 station.SendShip(shipResource, shipPrefab);
-                
+                SpaceSheepInterface(spaceSheep, false);
             });
         }
         else
@@ -180,7 +178,6 @@ public class InventoryUtils : MonoBehaviour
 
             for (int i = 0; i < structuresGroup.transform.childCount; i++)
             {
-                Debug.Log(planet.Buildings.Count);
                 Transform slot = structuresGroup.transform.GetChild(i);
                 slot.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
                 if (i < planet.Buildings.Count)
@@ -263,7 +260,6 @@ public class InventoryUtils : MonoBehaviour
         buyStationButton.GetComponent<Button>().onClick.RemoveAllListeners();
         buyStationButton.GetComponent<Button>().onClick.AddListener(() =>
         {
-            Debug.Log("Buy Station!");
             planet.AddBuilding(new Station());
             PlanetInterface(planet, true);
             UnDisplayBuyShipInterface();
@@ -272,7 +268,6 @@ public class InventoryUtils : MonoBehaviour
         buyDrillerButton.GetComponent<Button>().onClick.RemoveAllListeners();
         buyDrillerButton.GetComponent<Button>().onClick.AddListener(() =>
         {
-            Debug.Log("Buy Driller!");
             Driller driller = new Driller();
             planet.AddBuilding(driller);
             PlanetInterface(planet, true);
@@ -331,7 +326,6 @@ public class InventoryUtils : MonoBehaviour
             InventorySlot slot = globalShipsInventory.transform.GetChild(i).GetComponent<InventorySlot>();
             GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
             newItem.GetComponent<InventoryItem>().InitialiseItem(ships[i]);
-            Debug.Log(ships[i].planet.name);
         }
     }
 

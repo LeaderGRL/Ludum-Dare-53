@@ -35,11 +35,12 @@ public class Ship : MonoBehaviour
 
     public void SetTarget(string target)
     {
+        planetName=target;
         targetPlanet = GameObject.Find(target);
         GetComponent<Move>().enabled = true;
         GetComponent<Move>().target = targetPlanet.transform;
-        GetComponent<Move>().SetSpeed(5);
         //GetComponent<Move>().SetSpeed(shipRessource.shipStats.modulesDict["Reactor"].Stat);
+        GetComponent<Move>().SetSpeed(10f);
     }
 
 
@@ -54,20 +55,28 @@ public class Ship : MonoBehaviour
         {
             GetComponent<Move>().enabled = false;
             Station station = PlanetManager.instance.GetStation(other.gameObject);
-            // Finir la quête si c'est le dernier
 
-            if (station != null)
+            // Finir la quête si c'est le dernier
+            if (shipRessource.shipStats.AssignedQuest != null)
             {
-                InventoryManager.instance.AddToBuilding(shipRessource, station, 0);
                 if (Quest.instance.NeedZeroRessources(shipRessource.shipStats.AssignedQuest.Value.id))
                 {
                     // Peut être a changer car si un vaisseau de la même quête arrive et que le dernier est parti elle s'exécute
+
                     Quest.instance.finishQuest(shipRessource.shipStats.AssignedQuest.Value.id);
+
                 }
+                shipRessource.shipStats.AssignedQuest = null;
+            }
+            
+            if (station != null)
+            {
+                InventoryManager.instance.AddToBuilding(shipRessource, station, 0);
+                
             }
             else
             {
-                PlanetManager.instance.GetStation(startPlanet).RecallShip(gameObject, other.gameObject);
+                PlanetManager.instance.GetStation(startPlanet).RecallShip(gameObject, other.gameObject, shipRessource);
             }
             Destroy(gameObject);
             // shipStats.AssignedQuest = null;
