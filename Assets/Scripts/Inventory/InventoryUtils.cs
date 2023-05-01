@@ -78,7 +78,7 @@ public class InventoryUtils : MonoBehaviour
             shipInterface.interactable = true;
             shipInterface.blocksRaycasts = true;
 
-            level.text = "SpaceSheep";
+            level.text = "SpaceShip";
             ShipResource shipResource = (ShipResource)spaceSheep;
             shipPlanetName.text = shipResource.planet.name;
             fuelLevel.value = spaceSheep.fuelLevel;
