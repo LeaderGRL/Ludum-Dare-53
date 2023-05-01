@@ -8,6 +8,9 @@ public class Interaction : MonoBehaviour
     public Camera cam;
     Ray ray;
     RaycastHit hit;
+    
+    private InventoryUtils inventoryUtils = InventoryUtils.GetInventoryUtils();
+    
     void Start()
     {
         
@@ -27,8 +30,10 @@ public class Interaction : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                
+
                 // AFFICHER L'UI
+                Planet planet = PlanetManager.instance.planets[hit.transform.gameObject];
+                InventoryUtils.GetInventoryUtils().PlanetInterface(planet, true);
             }
         }
         else

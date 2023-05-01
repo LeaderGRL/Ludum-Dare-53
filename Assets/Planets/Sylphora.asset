@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecc37ba857b00d43aabfdfb33b44cbf, type: 3}
   m_Name: Sylphora
   m_EditorClassIdentifier: 
+  name: Sylphora
   rotationSpeed: 500
   resources:
   - {fileID: 11400000, guid: 9464ea6a48ea00248b2f2c900cd367f3, type: 2}

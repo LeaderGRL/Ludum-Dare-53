@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -21,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogWarning("Il y a plus d'une instance de PlayerManager dans la scène");
+            Debug.LogWarning("Il y a plus d'une instance de PlayerManager dans la scÃ¨ne");
             return;
         }
         instance = this;

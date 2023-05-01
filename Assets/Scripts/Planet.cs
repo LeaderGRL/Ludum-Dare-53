@@ -5,10 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Planet", menuName = "ScriptableObjects/Planet", order = 1)]
 public class Planet : ScriptableObject
 {
+    [SerializeField] private string name;
     [SerializeField] private int rotationSpeed;
     [SerializeField] private List<Building> buildings = new List<Building>();
     [SerializeField] private List<Resource> resources = new List<Resource>();
 
+    public string Name { get => name; set => name = value;  }
     public int RotationSpeed { get => rotationSpeed; set => rotationSpeed = value; }
     public List<Building> Buildings { get => buildings; set => buildings = value; }
     public List<Resource> Resources { get => resources; set => resources = value; }

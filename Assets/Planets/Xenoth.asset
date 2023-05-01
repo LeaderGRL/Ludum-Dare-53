@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecc37ba857b00d43aabfdfb33b44cbf, type: 3}
   m_Name: Xenoth
   m_EditorClassIdentifier: 
+  name: Xenoth
   rotationSpeed: 100
   resources:
   - {fileID: 11400000, guid: 923de2c02f860bb47a2c2b7747a0d012, type: 2}
