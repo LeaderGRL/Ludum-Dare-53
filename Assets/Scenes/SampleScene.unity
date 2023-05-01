@@ -10155,15 +10155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4721a8e66501d4e84eb00424d41016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   item: {fileID: 11400000, guid: 923de2c02f860bb47a2c2b7747a0d012, type: 2}
   item2: {fileID: 11400000, guid: 61cd17762904b7b498f767ed2b968a61, type: 2}
   item3: {fileID: 11400000, guid: 9464ea6a48ea00248b2f2c900cd367f3, type: 2}
-=======
-  item: {fileID: 11400000, guid: 61cd17762904b7b498f767ed2b968a61, type: 2}
-  item2: {fileID: 0}
-  image: {fileID: 0}
->>>>>>> 4254c3c24a7e2c87570d2e7582a22e18ed531cd7
 --- !u!4 &340647499
 Transform:
   m_ObjectHideFlags: 0
@@ -18724,11 +18718,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1833764837}
-<<<<<<< HEAD
   - {fileID: 1505186950}
-=======
-  - {fileID: 70578318}
->>>>>>> 3af59a90df58757682e9ef5b6cafb3c5045b2aa3
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20640,13 +20630,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065958625}
-<<<<<<< HEAD
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.26, y: 0, z: -0.418}
-=======
-  m_LocalRotation: {x: 0, y: 0.587852, z: 0, w: 0.8089685}
-  m_LocalPosition: {x: -0.15456872, y: 0, z: 0.47565058}
->>>>>>> 4254c3c24a7e2c87570d2e7582a22e18ed531cd7
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20754,34 +20739,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065958625}
-<<<<<<< HEAD
-=======
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
---- !u!114 &2065958632
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065958625}
->>>>>>> 3af59a90df58757682e9ef5b6cafb3c5045b2aa3
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daf51a7f76885da4dbc3957aca677791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactableObject: {fileID: 0}
-<<<<<<< HEAD
   cam: {fileID: 963194231}
 --- !u!114 &2065958632
 MonoBehaviour:
@@ -20950,9 +20913,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
-=======
-  cam: {fileID: 0}
->>>>>>> 3af59a90df58757682e9ef5b6cafb3c5045b2aa3
 --- !u!1 &2091182696
 GameObject:
   m_ObjectHideFlags: 0
