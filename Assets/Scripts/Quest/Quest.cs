@@ -107,7 +107,7 @@ public class Quest : MonoBehaviour
                         "Rewards : " + selectedQuest.reward.xp + "xp " + selectedQuest.reward.gold + "Nebulite";
                     DestinationText.GetComponent<TMP_Text>().text =
                         "Destination : " + selectedQuest.destination["planet"];
-                    materialsText.GetComponent<TMP_Text>().text = "Required materials : ";
+                    materialsText.GetComponent<TMP_Text>().text = "Required materials : \n";
                     foreach (var material in selectedQuest.materials)
                     {
                         materialsText.GetComponent<TMP_Text>().text += material.Key + " : " + material.Value + "\n";
@@ -126,7 +126,7 @@ public class Quest : MonoBehaviour
 
                         ShowQuestInProgress();
                         ShowQuest();
-                        GameObject.Find("DropdownChooseQuest").GetComponent<ShipChooseQuest>().UpdateSelections();
+                        GameObject.Find("MissionAssignation").GetComponent<ShipChooseQuest>().UpdateSelections();
                     });
                 });
             }
