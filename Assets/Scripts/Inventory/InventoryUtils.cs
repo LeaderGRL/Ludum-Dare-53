@@ -26,6 +26,10 @@ public class InventoryUtils : MonoBehaviour
     [SerializeField] private CanvasGroup buyBuildingInterface;
     [SerializeField] private Button hidePlanetInterfaceButton;
 
+    [Header("Global Ships")]
+    [SerializeField] private GameObject globalShipsInventory;
+    [SerializeField] private GameObject inventoryItemPrefab;
+
     [Header ("Planet shop")]
     [SerializeField] private CanvasGroup planetShopInterface;
     [SerializeField] private GameObject buyStationButton;
@@ -42,6 +46,7 @@ public class InventoryUtils : MonoBehaviour
     [Header("Station Inventory")]
     [SerializeField] private GameObject stationInterface;
     [SerializeField] private Button buyShipButton;
+    [SerializeField] private ShipResource shipResource;
 
     private void Awake()
     {
@@ -212,6 +217,8 @@ public class InventoryUtils : MonoBehaviour
             }
 
             stationInterface.SetActive(false);
+            DisplayGlobalsShips();
+
         }
     }
 
@@ -266,14 +273,29 @@ public class InventoryUtils : MonoBehaviour
         buyShipButton.onClick.RemoveAllListeners();
         buyShipButton.onClick.AddListener(() =>
         {
-            InventoryManager.instance.AddToBuilding(new ShipResource(), station, 0);
+            InventoryManager.instance.AddToBuilding(shipResource, station, 0);
         });
 
         UnDisplayBuyShipInterface();
+    }
+
+    private void DisplayGlobalsShips()
+    {
+        
+        List<ShipResource> ships = InventoryManager.instance.GetAllShips();
+        
+        for (int i = 0; i < ships.Count; i++)
+        {
+            InventorySlot slot = globalShipsInventory.transform.GetChild(i).GetComponent<InventorySlot>();
+            GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
+            newItem.GetComponent<InventoryItem>().InitialiseItem(ships[i]);
+        }
     }
 
     public static InventoryUtils GetInventoryUtils()
     {
         return _instance;
     }
+
+
 }
