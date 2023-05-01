@@ -175,7 +175,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 0}
 --- !u!222 &8015686171026066830
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2064,7 +2064,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5167311860890333082}
   m_HandleRect: {fileID: 8855944293753318158}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2241,7 +2241,7 @@ RectTransform:
   - {fileID: 9220256338403988865}
   - {fileID: 215737598943117449}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2283,10 +2283,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2973,7 +2973,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5163170643161767073}
   m_HandleRect: {fileID: 1438698731533267740}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3889,7 +3889,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5726112420491702876, guid: d1795753a06be244fbcd56af87f059be, type: 3}
       propertyPath: m_Size
-      value: 0.73333335
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726112420491702876, guid: d1795753a06be244fbcd56af87f059be, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6981453683488255040, guid: d1795753a06be244fbcd56af87f059be, type: 3}
       propertyPath: m_AnchorMax.x
