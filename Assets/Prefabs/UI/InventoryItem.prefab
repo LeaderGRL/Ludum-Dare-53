@@ -12,7 +12,10 @@ GameObject:
   - component: {fileID: 8734739090154348861}
   - component: {fileID: 9220560744485955463}
   - component: {fileID: 5420370561775898551}
+<<<<<<< HEAD
   - component: {fileID: 1140253130678271362}
+=======
+>>>>>>> feature/UI
   m_Layer: 5
   m_Name: InventoryItem
   m_TagString: Untagged
