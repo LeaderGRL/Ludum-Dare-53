@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class ShipStats
 {
-
     public bool Available;
+    public string Position;
     public Dictionary<string, Module> modulesDict;
+    public JSON.Data? AssignedQuest;
 
+    private float _fuel;
+    public float Fuel
+    {
+        get { return _fuel; }
+        set {
+            if (value >= modulesDict["Tank"].Stat)
+            {
+                _fuel = modulesDict["Tank"].Stat;
+                return;
+            }
+            _fuel = value; 
+        }
+    }
 
     public ShipStats()
     {
@@ -23,10 +37,16 @@ public class ShipStats
 
             modulesDict.Add(moduleDatas[i].name, newModule);
         }
+        AssignedQuest = null;
     }
 
     public void UpgradeModuleLevel(string moduleName)
     {
+        if (!Available)
+        {
+            Debug.Log("Can't upgrade because not available!");
+            return;
+        }
         JSON.ModuleData[] moduleDatas = JSON.Reader<JSON.ModuleData[]>("/Modules/Modules.json");
         foreach (var item in moduleDatas)
         {
@@ -42,6 +62,7 @@ public class ShipStats
         }
     }
 
+    
     
     public override string ToString()
     {
