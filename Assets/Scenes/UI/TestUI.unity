@@ -1338,6 +1338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceShipInventoryContainer: {fileID: 884826556}
   inventoryItemPrefab: {fileID: 672514140886635242, guid: 09584b4781db94248b02620fdfc6b253, type: 3}
+  image: {fileID: 0}
+  spaceShipIcon: {fileID: 21300000, guid: d25cf92dcf8933140a291cc67cc636ba, type: 3}
 --- !u!4 &1080168010
 Transform:
   m_ObjectHideFlags: 0
@@ -2133,6 +2135,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3096303446114018996, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7677725230157881578, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
       propertyPath: m_Name
       value: Slot1
@@ -2364,7 +2370,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 95932672397324632, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 193043868848816799, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2470,6 +2476,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2664146606966647717, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2983185621757329166, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_Name
       value: GUI
@@ -2482,6 +2492,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1080168011}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CancelBuySpaceSheep
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InventoryUtils, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4953348607397345223, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_Alpha
       value: 0
@@ -2489,6 +2527,34 @@ PrefabInstance:
     - target: {fileID: 5231136571824396034, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1080168011}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuySpaceSheep
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InventoryUtils, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
