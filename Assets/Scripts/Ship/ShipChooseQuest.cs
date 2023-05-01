@@ -16,13 +16,16 @@ public class ShipChooseQuest : MonoBehaviour
     public void UpdateSelections()
     {
         RemoveSelections();
+        
         int playerLevel = PlayerManager.instance.GetLevel();
+        Debug.Log(Quest.instance.GetQuests());
         List<JSON.Data> quests = Quest.instance.filterAcceptQuest(Quest.instance.GetQuests(), playerLevel);
         foreach (var item in quests)
         {
             dropdown.options.Add(new TMP_Dropdown.OptionData(item.name));
 
         }
+        dropdown.RefreshShownValue();
     }
 
     public void RemoveSelections()

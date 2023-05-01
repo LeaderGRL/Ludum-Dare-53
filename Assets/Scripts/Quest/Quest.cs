@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -31,15 +32,17 @@ public class Quest : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            quests = JSON.Reader<JSON.Data[]>("/Quest/quest.json");
             return;
         }
 
         Destroy(gameObject);
+        
     }
 
     private void Start()
     {
-        quests = JSON.Reader<JSON.Data[]>("/Quest/quest.json");
+        
         ShowQuest();
     }
 
@@ -48,8 +51,8 @@ public class Quest : MonoBehaviour
         GameObject text = Instantiate(textPrefab, parentOfChild.transform);
         text.GetComponentInChildren<TMP_Text>().text = quest.name;
         parentOfChild.GetComponent<RectTransform>().sizeDelta = new Vector2(0,
-            parent.GetComponent<RectTransform>().sizeDelta.y +
-            parent.GetComponent<GridLayoutGroup>().cellSize.y);
+            parentOfChild.GetComponent<RectTransform>().sizeDelta.y +
+            parentOfChild.GetComponent<GridLayoutGroup>().cellSize.y);
         return text;
     }
 
@@ -62,7 +65,7 @@ public class Quest : MonoBehaviour
         }
 
         // set the parent transform height to 0
-        parent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+        parentInProgress.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
         for (int i = 0; i < filteredQuest.Count; i++)
         {
             JSON.Data quest = filteredQuest[i];
@@ -123,6 +126,7 @@ public class Quest : MonoBehaviour
 
                         ShowQuestInProgress();
                         ShowQuest();
+                        GameObject.Find("DropdownChooseQuest").GetComponent<ShipChooseQuest>().UpdateSelections();
                     });
                 });
             }
@@ -166,6 +170,8 @@ public class Quest : MonoBehaviour
             if (quest.id != questID) continue;
             quest.done = true;
             quest.inProgress = false;
+            PlayerManager.instance.AddExperience(quest.reward.xp);
+            PlayerManager.instance.AddMoney(quest.reward.gold);
             quests[i] = quest;
         }
     }
@@ -180,15 +186,32 @@ public class Quest : MonoBehaviour
             {
                 quest.materials[material.Key] -= material.Value;
             }
+
             quests[i] = quest;
         }
     }
-    
-        
-    
+
+    public bool NeedZeroRessources(int questId)
+    {
+        foreach (var quest in quests)
+        {
+            if (quest.id != questId) continue;
+            foreach (var material in quest.materials)
+            {
+                if (material.Value > 0)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
     public void LevelUp()
     {
         PlayerManager.instance.AddExperience(100);
+        Debug.Log(PlayerManager.instance.GetLevel());
         ShowQuest();
     }
 
@@ -241,5 +264,13 @@ public class Quest : MonoBehaviour
     public JSON.Data[] GetQuests()
     {
         return quests;
+    }
+
+    
+
+    public IEnumerator FinishQuestCoroutine(int questId, float time)
+    {
+        yield return new WaitForSeconds(time);
+        finishQuest(questId);
     }
 }

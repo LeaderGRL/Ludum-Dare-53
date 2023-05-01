@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ecc37ba857b00d43aabfdfb33b44cbf, type: 3}
-  m_Name: Sylphora
+  m_Script: {fileID: 11500000, guid: 06fcabaa7d40a4d409272ab3ee949256, type: 3}
+  m_Name: ShipResource
   m_EditorClassIdentifier: 
-  name: Sylphora
-  rotationSpeed: 500
-  resources:
-  - {fileID: 11400000, guid: 9464ea6a48ea00248b2f2c900cd367f3, type: 2}
-  - {fileID: 11400000, guid: 0f2826657eb1f0c4fa8c325cbe1e8053, type: 2}
+  type: 
+  quantity: 1
+  icon: {fileID: 21300000, guid: d25cf92dcf8933140a291cc67cc636ba, type: 3}
+  value: 5000
+  stackable: 0
+  currentLocation: 
+  fuelLevel: 0
+  id: 0
