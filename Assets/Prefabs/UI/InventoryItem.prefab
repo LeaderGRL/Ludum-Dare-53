@@ -94,7 +94,6 @@ MonoBehaviour:
   countText: {fileID: 5552906181011487713}
   item: {fileID: 0}
   parentAfterDrag: {fileID: 0}
-<<<<<<< HEAD
   count: 1
 --- !u!1 &5552906181011487713
 GameObject:
@@ -143,15 +142,11 @@ CanvasRenderer:
   m_GameObject: {fileID: 5552906181011487713}
   m_CullTransparentMesh: 1
 --- !u!114 &4915981962591377152
-=======
---- !u!114 &8776477580847137933
->>>>>>> 3af59a90df58757682e9ef5b6cafb3c5045b2aa3
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 5552906181011487713}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -235,7 +230,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
-=======
   m_GameObject: {fileID: 672514140886635242}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -275,4 +269,3 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   inventoryUtils: {fileID: 0}
->>>>>>> 3af59a90df58757682e9ef5b6cafb3c5045b2aa3
