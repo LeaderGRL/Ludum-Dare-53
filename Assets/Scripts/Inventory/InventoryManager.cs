@@ -34,6 +34,7 @@ public class InventoryManager : MonoBehaviour
         for (var i = 0; i < spaceShipInventoryContainer.transform.childCount; i++)
         {
             items.Add(spaceShipInventoryContainer.transform.GetChild(i).GetComponent<InventorySlot>());
+
         }
         buildingsInventories = new Dictionary<Building, List<GameObject>>();
         
