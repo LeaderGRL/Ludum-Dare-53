@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     private int maxStack = 64;
-    
+
     public static InventoryManager instance;
     [SerializeField] private GameObject spaceShipInventoryContainer;
     [SerializeField] private GameObject inventoryContainerPrefab;
@@ -37,11 +37,11 @@ public class InventoryManager : MonoBehaviour
 
         }
         buildingsInventories = new Dictionary<Building, List<GameObject>>();
-        
+
     }
 
     public bool Add(Resource item)
-    { 
+    {
         for (int i = 0; i < items.Count; i++)
         {
             InventorySlot slot = items[i];
@@ -67,7 +67,7 @@ public class InventoryManager : MonoBehaviour
                 SpawnNewItem(item, slot);
                 return true;
             }
-            
+
         }
         return false;
     }
@@ -94,7 +94,7 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitialiseItem(item);
     }
 
-    
+
 
     public void AddToBuilding(Resource item, Building building, int inventoryIndex)
     {
@@ -132,24 +132,30 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
+    public void AddToBuilding(Resource item, Building building, int inventoryIndex, int count)
+    {
+        GameObject inventory = buildingsInventories[building][inventoryIndex];
+        AddToBuilding(item, inventory);
+    }
+
     public void AddBuildingInventory(Building building, List<int> inventoriesCapcities)
     {
         List<GameObject> inventories = new List<GameObject>();
 
         foreach (var capcity in inventoriesCapcities)
         {
-            
+
             GameObject newInventory = InstantiateInventory(capcity);
             inventories.Add(newInventory);
             PlaceBuildingInventory(building, newInventory, inventories.Count);
         }
         buildingsInventories.Add(building, inventories);
-        
+
     }
 
-    public void PlaceBuildingInventory(Building building, GameObject inventory,  int inventoryNumber)
+    public void PlaceBuildingInventory(Building building, GameObject inventory, int inventoryNumber)
     {
-        if (typeof(Station).IsInstanceOfType(building) )
+        if (typeof(Station).IsInstanceOfType(building))
         {
             switch (inventoryNumber)
             {
@@ -164,7 +170,7 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            
+
         }
     }
 
@@ -236,4 +242,71 @@ public class InventoryManager : MonoBehaviour
         }
         return false;
     }
+
+    public void TransferItem(Resource item, Building from, Building to, int inventoryIndex)
+    {
+        GameObject fromInventory = buildingsInventories[from][inventoryIndex];
+        RemoveItemFromBuilding(item, from);
+        AddToBuilding(item, to, 0, fromInventory.GetComponent<InventoryItem>().c);
+    }
+
+    //public void TransferItem(Resource item, Building from, Building to, int inventoryIndex)
+    //{
+    //    RemoveItemFromBuilding(item, from);
+    //    AddToBuilding(item, to, inventoryIndex);
+    //}
+
+    //public void TransferItem(Resource item, Building from, Building to, GameObject inventory)
+    //{
+    //    RemoveItemFromBuilding(item, from);
+    //    AddToBuilding(item, inventory);
+    //}
+
+    //public void TransferItem(Resource item, Building from, Building to, GameObject inventory, int inventoryIndex)
+    //{
+    //    RemoveItemFromBuilding(item, from);
+    //    AddToBuilding(item, inventory);
+    //}
+
+    //public void TransferItem(Resource item, Building from, Building to, int inventoryIndexFrom, int inventoryIndexTo)
+    //{
+    //    RemoveItemFromBuilding(item, from);
+    //    AddToBuilding(item, to, inventoryIndexTo);
+    //}
+
+    //public void TransferItem(Resource item, Building from, Building to, int inventoryIndexFrom, GameObject inventoryTo)
+    //{
+    //    RemoveItemFromBuilding(item, from);
+    //    AddToBuilding(item, inventoryTo);
+    //}
+
+    //public void TransferItem(Resource item, Building from, Building to, GameObject inventoryFrom, int inventoryIndexTo)
+    //{
+    //    RemoveItemFromBuilding(item, from);
+    //    AddToBuilding(item, to, inventoryIndexTo);
+    //}
+
+    //public void TransferItem(Resource item, Building from, Building to, GameObject inventoryFrom, GameObject inventoryTo)
+    //{
+    //    RemoveItemFromBuilding(item, from);
+    //    AddToBuilding(item, inventoryTo);
+    //}
+
+    //public void TransferItem(Resource item, Building from, Building to, GameObject inventoryFrom, GameObject inventoryTo, int inventoryIndexTo)
+    //{
+    //    RemoveItemFromBuilding(item, from);
+    //    AddToBuilding(item, inventoryTo, inventoryIndexTo);
+    //}
+
+    //public void TransferItem(Resource item, Building from, Building to, int inventoryIndexFrom, GameObject inventoryTo, int inventoryIndexTo)
+    //{
+    //    RemoveItemFromBuilding(item, from);
+    //    AddToBuilding(item, inventoryTo, inventoryIndexTo);
+    //}
+
+    //public void TransferItem(Resource item, Building from, Building to, int inventoryIndexFrom, int inventoryIndexTo, GameObject inventoryTo)
+    //{
+    //    RemoveItemFromBuilding(item, from);
+    //    AddToBuilding(item, inventoryTo, inventoryIndexTo);
+    //}
 }
