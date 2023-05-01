@@ -37,7 +37,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     
     public void RefreshCount()
     {
-        countText.GetComponent<TextMeshPro>().text = count.ToString();
+        countText.GetComponent<TextMeshProUGUI>().text = count.ToString();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

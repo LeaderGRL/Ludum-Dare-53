@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    private int maxStack = 64;
+    
     public static InventoryManager instance;
     [SerializeField] private GameObject spaceShipInventoryContainer; 
     private List<InventorySlot> items = new List<InventorySlot>();
@@ -30,8 +32,23 @@ public class InventoryManager : MonoBehaviour
     }
 
     public bool Add(Resource item)
-    {
-        for (int i = 0; i <= items.Count; i++)
+    { 
+        for (int i = 0; i < items.Count; i++)
+        {
+            InventorySlot slot = items[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+            if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < maxStack && itemInSlot.item.Stackable == true)
+            {
+                Debug.Log("NOT FULL");
+                itemInSlot.count++;
+                itemInSlot.RefreshCount();
+                return true;
+            }
+
+        }
+
+        for (int i = 0; i < items.Count; i++)
         {
             InventorySlot slot = items[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();

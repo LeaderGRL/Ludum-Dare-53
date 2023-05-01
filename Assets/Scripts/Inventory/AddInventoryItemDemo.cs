@@ -5,6 +5,7 @@ using UnityEngine;
 public class AddInventoryItemDemo : MonoBehaviour
 {
     public Resource item;
+    public Resource item2;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,11 @@ public class AddInventoryItemDemo : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             InventoryManager.instance.Add(item);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            InventoryManager.instance.Add(item2);
         }
     }
 }
