@@ -52,6 +52,8 @@ public class InventoryUtils : MonoBehaviour
     [SerializeField] private Button buyShipButton;
     [SerializeField] private ShipResource shipResource;
 
+    [SerializeField] private Animator hangar;
+
     private void Awake()
     {
         if (_instance == null)
@@ -71,6 +73,7 @@ public class InventoryUtils : MonoBehaviour
     {
         if (show)
         {
+            hangar.Play("hangar.hangar", -1, 0f);
             shipInterface.alpha = 1;
             shipInterface.interactable = true;
             shipInterface.blocksRaycasts = true;
