@@ -98,6 +98,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                     inventoryUtils.itemShowed = null;
                 }
                 break;
+            default:
+                //InventoryManager.instance.TransferItem(item, ???, ???, 0); // ADD INVENTORY MANAGER FUNCTION TO GET BUILDING FROM INVENTORY
+                break;
         }
     }
 }
