@@ -137,6 +137,21 @@ public class InventoryManager : MonoBehaviour
         newInventory.SetActive(false);
         return newInventory;
     }
+
+    public List<GameObject> GetAllInventories()
+    {
+        List<GameObject> list = new List<GameObject>();
+        foreach (KeyValuePair<Building, List<GameObject>> item in buildingsInventories)
+        {
+            foreach (GameObject inventory in item.Value)
+            {
+                list.Add(inventory);
+            }
+        }
+
+
+        return list;
+    }
     //public void Remove(Resource item)
     //{
     //    for (var i = 0; i < spaceShipInventoryContainer.transform.childCount; i++)

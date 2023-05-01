@@ -37,6 +37,11 @@ public class InventoryUtils : MonoBehaviour
     [SerializeField] private Sprite iconeStation;
     [SerializeField] private Sprite iconeExtractor;
     [SerializeField] private Sprite iconeDefaultStruct;
+
+    [Header("Station Inventory")]
+    [SerializeField] private GameObject stationInterface;
+    [SerializeField] private Button buyShipButton;
+
     private void Awake()
     {
         if (_instance == null)
@@ -139,12 +144,9 @@ public class InventoryUtils : MonoBehaviour
                     if (typeof(Station).IsInstanceOfType(planet.Buildings[i]))
                     {
                         slot.GetChild(0).gameObject.GetComponent<Image>().sprite = iconeStation;
-                        List<GameObject> inventories = InventoryManager.instance.buildingsInventories[planet.Buildings[i]];
+                        Station station = (Station)planet.Buildings[i];
                         slot.GetChild(0).GetComponent<Button>().onClick.AddListener(() => {
-                            foreach (var item in inventories)
-                            {
-                                item.SetActive(true);
-                            }
+                            DisplayStationInterface(station);
                         });
 
 
@@ -156,6 +158,10 @@ public class InventoryUtils : MonoBehaviour
                 slot.GetChild(0).gameObject.GetComponent<Image>().sprite = iconeDefaultStruct;
                 slot.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
                 {
+                    foreach (var item in InventoryManager.instance.GetAllInventories())
+                    {
+                        item.SetActive(false);
+                    }
                     DisplayBuyShipInterface(planet);
                 });
                
@@ -197,7 +203,28 @@ public class InventoryUtils : MonoBehaviour
         planetShopInterface.blocksRaycasts = false;
     }
 
+    private void DisplayStationInterface(Station station)
+    {
+        foreach (var item in InventoryManager.instance.GetAllInventories())
+        {
+            item.SetActive(false);
+        }
 
+        foreach (var item in InventoryManager.instance.buildingsInventories[station])
+        {
+            item.SetActive(true);
+        }
+
+        stationInterface.SetActive(true);
+
+        buyShipButton.onClick.RemoveAllListeners();
+        buyShipButton.onClick.AddListener(() =>
+        {
+            InventoryManager.instance.AddToBuilding(new ShipResource(), station, 0);
+        });
+
+        UnDisplayBuyShipInterface();
+    }
 
     public static InventoryUtils GetInventoryUtils()
     {

@@ -10790,25 +10790,17 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2057009667526773395, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 544.157
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057009667526773395, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 650.9064
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057009667526773395, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2057009667526773395, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 114
-      objectReference: {fileID: 0}
     - target: {fileID: 2348454503353561569, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3278111114318096768, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
+      propertyPath: m_Name
+      value: BuyShipButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363413372881199764, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4759747033575450333, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
       propertyPath: m_Alpha
@@ -10867,7 +10859,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4117093335035803117, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
+    - {fileID: 2330335389667995140, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 249391700648460196, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
       insertIndex: -1
@@ -17775,6 +17769,8 @@ MonoBehaviour:
   iconeStation: {fileID: 21300000, guid: 83f70ab37dae39360a04a93571595203, type: 3}
   iconeExtractor: {fileID: 21300000, guid: e1153635269e02f5a9f454a17cb32027, type: 3}
   iconeDefaultStruct: {fileID: 21300000, guid: 93d674bc098a5b54ca600f8a51ee4a19, type: 3}
+  stationInterface: {fileID: 1938321758}
+  buyShipButton: {fileID: 1672271181}
 --- !u!4 &1181696108
 Transform:
   m_ObjectHideFlags: 0
@@ -19644,6 +19640,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578661763}
   m_CullTransparentMesh: 1
+--- !u!114 &1672271181 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3055497765349617300, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
+  m_PrefabInstance: {fileID: 780476652}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1683308646
 GameObject:
   m_ObjectHideFlags: 0
@@ -20382,6 +20389,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833764836}
   m_CullTransparentMesh: 1
+--- !u!1 &1938321758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3363413372881199764, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
+  m_PrefabInstance: {fileID: 780476652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!225 &1944426169 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 4759747033575450333, guid: 4c1935378e697e982a311cd028fb025c, type: 3}
