@@ -6,6 +6,8 @@ public class InventoryUtils : MonoBehaviour
 {
 
     private static InventoryUtils _instance;
+    
+    [HideInInspector] public Resource itemShowed;
 
     [SerializeField] private CanvasGroup mainGui;
 
@@ -13,6 +15,8 @@ public class InventoryUtils : MonoBehaviour
     [SerializeField] private TMP_Text level;
     [SerializeField] private TMP_Text shipPlanetName;
     [SerializeField] private Slider fuelLevel;
+    
+    [SerializeField] private CanvasGroup shipBuyMenu;
 
     [SerializeField] private CanvasGroup planetInterface;
     [SerializeField] private TMP_Text planetName;
@@ -53,7 +57,40 @@ public class InventoryUtils : MonoBehaviour
             shipInterface.blocksRaycasts = false;
         }
     }
-
+    
+    public void ShowSpaceSheepBuyMenu(Resource item, bool show)
+    {
+        if (show)
+        {
+            shipBuyMenu.interactable = true;
+            shipBuyMenu.blocksRaycasts = true;
+            shipBuyMenu.alpha = 1;
+        }
+        else
+        {
+            shipBuyMenu.interactable = false;
+            shipBuyMenu.blocksRaycasts = false;
+            shipBuyMenu.alpha = 0;
+        }
+    }
+    
+    public void BuySpaceSheep()
+    {
+        InventoryManager.instance.ChangeToSpaceShip();
+        shipBuyMenu.interactable = false;
+        shipBuyMenu.blocksRaycasts = false;
+        shipBuyMenu.alpha = 0;
+        itemShowed = null;
+    }
+    
+    public void CancelBuySpaceSheep()
+    {
+        shipBuyMenu.interactable = false;
+        shipBuyMenu.blocksRaycasts = false;
+        shipBuyMenu.alpha = 0;
+        itemShowed = null;
+    }
+    
     public void AssignMission(int value)
     {
         
