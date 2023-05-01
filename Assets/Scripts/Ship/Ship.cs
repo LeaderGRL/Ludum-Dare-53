@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
+    //t trop bo mec UwU
     private ShipResource shipRessource;
     private bool collide;
 
