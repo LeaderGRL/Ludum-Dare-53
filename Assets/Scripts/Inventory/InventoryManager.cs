@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject inventoryContainerPrefab;
     [SerializeField] private GameObject slotPrefab;
     private List<InventorySlot> items = new List<InventorySlot>();
-    private Dictionary<Building, List<GameObject>> buildingsInventories;
+    public Dictionary<Building, List<GameObject>> buildingsInventories;
 
     public GameObject inventoryItemPrefab;
 
@@ -79,23 +80,33 @@ public class InventoryManager : MonoBehaviour
     public void AddBuildingInventory(Building building, List<int> inventoriesCapcities)
     {
         List<GameObject> inventories = new List<GameObject>();
+
         foreach (var capcity in inventoriesCapcities)
         {
             
             GameObject newInventory = InstantiateInventory(capcity);
             inventories.Add(newInventory);
-            switch (inventories.Count)
-            {
-                case 1:
-                    newInventory.GetComponent<RectTransform>().position = new Vector3(300, 850, 0);
-                    break;
-                case 2:
-                    newInventory.GetComponent<RectTransform>().position = new Vector3(300, 600, 0);
-                    break;
-            }
+            PlaceBuildingInventory(building, newInventory, inventories.Count);
         }
         buildingsInventories.Add(building, inventories);
         
+    }
+
+    public void PlaceBuildingInventory(Building building, GameObject inventory,  int inventoryNumber)
+    {
+        if (typeof(Station).IsInstanceOfType(building) )
+        {
+            switch (inventoryNumber)
+            {
+                case 1:
+                    inventory.GetComponent<RectTransform>().position = new Vector3(300, 850, 0);
+                    break;
+                case 2:
+                    inventory.GetComponent<RectTransform>().position = new Vector3(300, 600, 0);
+                    break;
+            }
+            return;
+        }
     }
 
     public GameObject InstantiateInventory(int capacity)

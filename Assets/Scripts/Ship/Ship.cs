@@ -5,26 +5,36 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-    private ShipStats shipStats;
+    private ShipResource shipRessource;
     private bool collide;
 
+    private GameObject startPlanet;
     private string planetName;
 
-    // Start is called before the first frame update
-    void Start()
+    public GameObject StartPlanet
     {
+        get { return startPlanet; }
+        set { startPlanet = value; }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        planetName = "Vespera";
-        if (planetName != null && !collide)
-        {
-            GetComponent<Move>().enabled = true;
-            GetComponent<Move>().target =
-                GameObject.Find(planetName).transform;
+    public ShipResource Resource { 
+        get { return shipRessource; }
+        set { 
+            shipRessource = value;
+            if (shipRessource.shipStats.AssignedQuest != null)
+            {
+                planetName = shipRessource.shipStats.AssignedQuest.Value.destination["planet"];
+                SetTarget(planetName);
+            }
         }
+    }
+
+
+
+    public void SetTarget(string target)
+    {
+        GetComponent<Move>().enabled = true;
+        GetComponent<Move>().target = GameObject.Find(target).transform;
     }
 
     private void OnCollisionEnter(Collision other)
@@ -32,7 +42,18 @@ public class Ship : MonoBehaviour
         if (other.gameObject.name == planetName)
         {
             GetComponent<Move>().enabled = false;
-            collide = true;
+            Station station = PlanetManager.instance.GetStation(other.gameObject);
+            // Finir la quête si c'est le dernier
+
+            if (station != null)
+            {
+                InventoryManager.instance.AddToBuilding(shipRessource, station, 0);
+            }
+            else
+            {
+                
+            }
+            Destroy(gameObject);
             // shipStats.AssignedQuest = null;
         }
     }
