@@ -75,6 +75,11 @@ public class ShipStats
         return res;
     }
 
+    public void SetAssignedQuest(JSON.Data? quest)
+    {
+        AssignedQuest = quest;
+    }
+
     public struct Module
     {
         public string Name;

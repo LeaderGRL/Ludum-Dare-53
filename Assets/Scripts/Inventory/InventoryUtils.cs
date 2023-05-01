@@ -12,11 +12,13 @@ public class InventoryUtils : MonoBehaviour
 
     [SerializeField] private CanvasGroup mainGui;
 
+    [Header("Ship Interface")]
     [SerializeField] private CanvasGroup shipInterface;
     [SerializeField] private TMP_Text level;
     [SerializeField] private TMP_Text shipPlanetName;
     [SerializeField] private Slider fuelLevel;
-    
+    [SerializeField] private Button sendButton;
+
     [SerializeField] private CanvasGroup shipBuyMenu;
 
     [SerializeField] private CanvasGroup planetInterface;
@@ -28,7 +30,9 @@ public class InventoryUtils : MonoBehaviour
 
     [Header("Global Ships")]
     [SerializeField] private GameObject globalShipsInventory;
+    [SerializeField] private TMP_Dropdown dropdown;
     [SerializeField] private GameObject inventoryItemPrefab;
+    [SerializeField] private GameObject shipPrefab;
 
     [Header ("Planet shop")]
     [SerializeField] private CanvasGroup planetShopInterface;
@@ -75,6 +79,34 @@ public class InventoryUtils : MonoBehaviour
             ShipResource shipResource = (ShipResource)spaceSheep;
             shipPlanetName.text = shipResource.planet.name;
             fuelLevel.value = spaceSheep.fuelLevel;
+
+            string questName = "";
+            
+            sendButton.onClick.AddListener(() =>
+            {
+                if (dropdown.options.Count > 0)
+                {
+                    questName = dropdown.options[dropdown.value].text;
+                }
+                if (questName == null || questName == "")
+                {
+                    return;
+                }
+                JSON.Data? quest = Quest.instance.GetQuestByName(questName);
+                if (quest == null)
+                {
+                    return;    
+                }
+                
+
+                Station station = (Station)shipResource.building;
+                Debug.Log("Quest is null: " + (quest == null).ToString());
+                Debug.Log("shipResource is null: " + (shipResource == null).ToString());
+                Debug.Log("shipResource is null: " + (shipResource.shipStats == null).ToString());
+                shipResource.shipStats.SetAssignedQuest(quest);
+                station.SendShip(shipResource, shipPrefab);
+                
+            });
         }
         else
         {
@@ -274,7 +306,16 @@ public class InventoryUtils : MonoBehaviour
         buyShipButton.onClick.RemoveAllListeners();
         buyShipButton.onClick.AddListener(() =>
         {
-            InventoryManager.instance.AddToBuilding(shipResource, station, 0);
+            ShipResource newShip = ScriptableObject.CreateInstance<ShipResource>();
+            newShip.type = shipResource.type;
+            newShip.name = shipResource.name;
+            newShip.shipStats = new ShipStats();
+            newShip.planet = shipResource.planet;
+            newShip.value = shipResource.value;
+            newShip.icon = shipResource.icon;
+            newShip.fuelLevel = shipResource.fuelLevel;
+            newShip.currentLocation = shipResource.currentLocation;
+            InventoryManager.instance.AddToBuilding(newShip, station, 0);
         });
 
         UnDisplayBuyShipInterface();
@@ -290,7 +331,7 @@ public class InventoryUtils : MonoBehaviour
             InventorySlot slot = globalShipsInventory.transform.GetChild(i).GetComponent<InventorySlot>();
             GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
             newItem.GetComponent<InventoryItem>().InitialiseItem(ships[i]);
-            Debug.Log("");
+            Debug.Log(ships[i].planet.name);
         }
     }
 

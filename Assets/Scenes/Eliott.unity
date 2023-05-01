@@ -10464,6 +10464,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1327290606}
     - target: {fileID: 6745076167979773473, guid: 19b1f9174cb613b4189d79509c41b227, type: 3}
+      propertyPath: dropdown
+      value: 
+      objectReference: {fileID: 1024014884}
+    - target: {fileID: 6745076167979773473, guid: 19b1f9174cb613b4189d79509c41b227, type: 3}
       propertyPath: fuelLevel
       value: 
       objectReference: {fileID: 1327290602}
@@ -10471,6 +10475,14 @@ PrefabInstance:
       propertyPath: planetName
       value: 
       objectReference: {fileID: 1136153745}
+    - target: {fileID: 6745076167979773473, guid: 19b1f9174cb613b4189d79509c41b227, type: 3}
+      propertyPath: sendButton
+      value: 
+      objectReference: {fileID: 1191170719}
+    - target: {fileID: 6745076167979773473, guid: 19b1f9174cb613b4189d79509c41b227, type: 3}
+      propertyPath: shipPrefab
+      value: 
+      objectReference: {fileID: 2043189964539273103, guid: 7aa512216c47a644381156c2c1e268fe, type: 3}
     - target: {fileID: 6745076167979773473, guid: 19b1f9174cb613b4189d79509c41b227, type: 3}
       propertyPath: shipBuyMenu
       value: 
@@ -17187,6 +17199,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5540024010959950352, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
   m_PrefabInstance: {fileID: 1327290599}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1024014884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5373356907159664917, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+  m_PrefabInstance: {fileID: 1327290599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1068603495
 GameObject:
   m_ObjectHideFlags: 0
@@ -18126,6 +18149,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1998645937403902242, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
   m_PrefabInstance: {fileID: 1179529140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1191170719 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8008484800136600777, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+  m_PrefabInstance: {fileID: 1327290599}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1235095640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18434,15 +18468,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 964974664508822344, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 964974664508822344, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 964974664508822344, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2013209444023131468, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_IsActive
@@ -18610,7 +18644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5231136571824396034, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5292170946156586826, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -18692,10 +18726,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1514774683}
-    - target: {fileID: 6046999843359091308, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CloseButton
-      objectReference: {fileID: 0}
     - target: {fileID: 6630663287250785706, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

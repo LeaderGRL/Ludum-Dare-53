@@ -20,4 +20,4 @@ MonoBehaviour:
   currentLocation: 
   fuelLevel: 0
   id: 0
-  planet: {fileID: 11400000, guid: e2da4685576779d4c96b541d2edd352a, type: 2}
+  planet: {fileID: 0}

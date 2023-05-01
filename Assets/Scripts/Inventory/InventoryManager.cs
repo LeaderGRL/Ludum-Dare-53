@@ -111,6 +111,7 @@ public class InventoryManager : MonoBehaviour
             GameObject planet = PlanetManager.instance.PlanetGameObject(building);
             ShipResource shipItem = (ShipResource)item;
             shipItem.planet = PlanetManager.instance.planets[planet];
+            shipItem.building = building;
             item = shipItem;
         }
 

@@ -341,7 +341,7 @@
     }
   },
   {
-    "name": "10",
+    "name": "Need 10 Uranium",
     "id": 20,
     "description": "Hi, i'm Tobias and I need 10 uranium to restart my super calculator",
     "levelRequired": 1,
@@ -350,7 +350,7 @@
     },
     "once": false,
     "destination": {
-      "planet": ""
+      "planet": "Nimbala"
     },
     "reward": {
       "xp": 20,

@@ -6,7 +6,9 @@ using UnityEngine;
 public class ShipResource : Resource
 {
     public ShipStats shipStats;
+    public Building building;
     public Planet planet;
+
 
    
 }
