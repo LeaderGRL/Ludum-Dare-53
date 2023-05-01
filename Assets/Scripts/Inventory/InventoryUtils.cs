@@ -24,6 +24,7 @@ public class InventoryUtils : MonoBehaviour
     [SerializeField] private TMP_Text planetRotationSpeed;
 
     [SerializeField] private CanvasGroup buyBuildingInterface;
+    [SerializeField] private Button hidePlanetInterfaceButton;
 
     [Header ("Planet shop")]
     [SerializeField] private CanvasGroup planetShopInterface;
@@ -133,6 +134,12 @@ public class InventoryUtils : MonoBehaviour
             planetInterface.interactable = true;
             planetInterface.blocksRaycasts = true;
 
+            hidePlanetInterfaceButton.onClick.RemoveAllListeners();
+            hidePlanetInterfaceButton.onClick.AddListener(() =>
+            {
+                PlanetInterface(planet, !show);
+            });
+
             for (int i = 0; i < structuresGroup.transform.childCount; i++)
             {
                 Debug.Log(planet.Buildings.Count);
@@ -198,6 +205,13 @@ public class InventoryUtils : MonoBehaviour
             mainGui.alpha = 1;
             mainGui.interactable = true;
             mainGui.blocksRaycasts = true;
+
+            foreach (var item in InventoryManager.instance.GetAllInventories())
+            {
+                item.SetActive(false);
+            }
+
+            stationInterface.SetActive(false);
         }
     }
 
