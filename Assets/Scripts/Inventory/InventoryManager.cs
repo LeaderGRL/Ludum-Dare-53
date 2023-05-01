@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -104,6 +105,16 @@ public class InventoryManager : MonoBehaviour
 
     public bool AddToBuilding(Resource item, GameObject inventory)
     {
+        if (typeof(ShipResource).IsInstanceOfType(item))
+        {
+            Building building = GetBuildingByInventory(inventory);
+            GameObject planet = PlanetManager.instance.PlanetGameObject(building);
+            ShipResource shipItem = (ShipResource)item;
+            shipItem.planet = PlanetManager.instance.planets[planet];
+            shipItem.building = building;
+            item = shipItem;
+        }
+
         for (int i = 0; i < inventory.transform.childCount; i++)
         {
             InventorySlot slot = inventory.transform.GetChild(i).GetComponent<InventorySlot>();
@@ -118,7 +129,6 @@ public class InventoryManager : MonoBehaviour
             }
 
         }
-
         for (int i = 0; i < inventory.transform.childCount; i++)
         {
             InventorySlot slot = inventory.transform.GetChild(i).GetComponent<InventorySlot>();
@@ -241,6 +251,36 @@ public class InventoryManager : MonoBehaviour
 
         }
         return false;
+    }
+
+    public List<ShipResource> GetAllShips()
+    {
+        List<ShipResource> shipRessources = new List<ShipResource>();
+        List<GameObject> inventories = GetAllInventories();
+        foreach (var inventory in inventories)
+        {
+            for (int i = 0; i < inventory.transform.childCount; i++)
+            {
+                Transform slot = inventory.transform.GetChild(i);
+                if (slot.childCount > 0 && typeof(ShipResource).IsInstanceOfType(slot.GetChild(0).GetComponent<InventoryItem>().item))
+                {
+                    shipRessources.Add((ShipResource)slot.GetChild(0).GetComponent<InventoryItem>().item);
+                }
+            }
+        }
+        return shipRessources;
+    }
+
+    public Building GetBuildingByInventory(GameObject inventory)
+    {
+        foreach (var item in buildingsInventories)
+        {
+            if (item.Value.Contains(inventory))
+            {
+                return item.Key;
+            }
+        }
+        return null;
     }
 
     public void TransferItem(Resource item, Building from, Building to, int inventoryIndex)

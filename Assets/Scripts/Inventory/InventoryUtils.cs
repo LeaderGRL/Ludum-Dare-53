@@ -12,11 +12,13 @@ public class InventoryUtils : MonoBehaviour
 
     [SerializeField] private CanvasGroup mainGui;
 
+    [Header("Ship Interface")]
     [SerializeField] private CanvasGroup shipInterface;
     [SerializeField] private TMP_Text level;
     [SerializeField] private TMP_Text shipPlanetName;
     [SerializeField] private Slider fuelLevel;
-    
+    [SerializeField] private Button sendButton;
+
     [SerializeField] private CanvasGroup shipBuyMenu;
 
     [SerializeField] private CanvasGroup planetInterface;
@@ -24,6 +26,13 @@ public class InventoryUtils : MonoBehaviour
     [SerializeField] private TMP_Text planetRotationSpeed;
 
     [SerializeField] private CanvasGroup buyBuildingInterface;
+    [SerializeField] private Button hidePlanetInterfaceButton;
+
+    [Header("Global Ships")]
+    [SerializeField] private GameObject globalShipsInventory;
+    [SerializeField] private TMP_Dropdown dropdown;
+    [SerializeField] private GameObject inventoryItemPrefab;
+    [SerializeField] private GameObject shipPrefab;
 
     [Header ("Planet shop")]
     [SerializeField] private CanvasGroup planetShopInterface;
@@ -41,6 +50,9 @@ public class InventoryUtils : MonoBehaviour
     [Header("Station Inventory")]
     [SerializeField] private GameObject stationInterface;
     [SerializeField] private Button buyShipButton;
+    [SerializeField] private ShipResource shipResource;
+
+    [SerializeField] private Animator hangar;
 
     private void Awake()
     {
@@ -61,13 +73,43 @@ public class InventoryUtils : MonoBehaviour
     {
         if (show)
         {
+            hangar.Play("hangar.hangar", -1, 0f);
             shipInterface.alpha = 1;
             shipInterface.interactable = true;
             shipInterface.blocksRaycasts = true;
 
             level.text = "SpaceSheep";
-            shipPlanetName.text = spaceSheep.currentLocation;
+            ShipResource shipResource = (ShipResource)spaceSheep;
+            shipPlanetName.text = shipResource.planet.name;
             fuelLevel.value = spaceSheep.fuelLevel;
+
+            string questName = "";
+            
+            sendButton.onClick.AddListener(() =>
+            {
+                if (dropdown.options.Count > 0)
+                {
+                    questName = dropdown.options[dropdown.value].text;
+                }
+                if (questName == null || questName == "")
+                {
+                    return;
+                }
+                JSON.Data? quest = Quest.instance.GetQuestByName(questName);
+                if (quest == null)
+                {
+                    return;    
+                }
+                
+
+                Station station = (Station)shipResource.building;
+                Debug.Log("Quest is null: " + (quest == null).ToString());
+                Debug.Log("shipResource is null: " + (shipResource == null).ToString());
+                Debug.Log("shipResource is null: " + (shipResource.shipStats == null).ToString());
+                shipResource.shipStats.SetAssignedQuest(quest);
+                station.SendShip(shipResource, shipPrefab);
+                
+            });
         }
         else
         {
@@ -132,6 +174,12 @@ public class InventoryUtils : MonoBehaviour
             planetInterface.alpha = 1;
             planetInterface.interactable = true;
             planetInterface.blocksRaycasts = true;
+
+            hidePlanetInterfaceButton.onClick.RemoveAllListeners();
+            hidePlanetInterfaceButton.onClick.AddListener(() =>
+            {
+                PlanetInterface(planet, !show);
+            });
 
             for (int i = 0; i < structuresGroup.transform.childCount; i++)
             {
@@ -198,6 +246,15 @@ public class InventoryUtils : MonoBehaviour
             mainGui.alpha = 1;
             mainGui.interactable = true;
             mainGui.blocksRaycasts = true;
+
+            foreach (var item in InventoryManager.instance.GetAllInventories())
+            {
+                item.SetActive(false);
+            }
+
+            stationInterface.SetActive(false);
+            DisplayGlobalsShips();
+
         }
     }
 
@@ -252,14 +309,51 @@ public class InventoryUtils : MonoBehaviour
         buyShipButton.onClick.RemoveAllListeners();
         buyShipButton.onClick.AddListener(() =>
         {
-            InventoryManager.instance.AddToBuilding(new ShipResource(), station, 0);
+            ShipResource newShip = ScriptableObject.CreateInstance<ShipResource>();
+            newShip.type = shipResource.type;
+            newShip.name = shipResource.name;
+            newShip.shipStats = new ShipStats();
+            newShip.planet = shipResource.planet;
+            newShip.value = shipResource.value;
+            newShip.icon = shipResource.icon;
+            newShip.fuelLevel = shipResource.fuelLevel;
+            newShip.currentLocation = shipResource.currentLocation;
+            InventoryManager.instance.AddToBuilding(newShip, station, 0);
         });
 
         UnDisplayBuyShipInterface();
+    }
+
+    private void DisplayGlobalsShips()
+    {
+        RemoveGlobalShips();
+        List<ShipResource> ships = InventoryManager.instance.GetAllShips();
+        
+        for (int i = 0; i < ships.Count; i++)
+        {
+            InventorySlot slot = globalShipsInventory.transform.GetChild(i).GetComponent<InventorySlot>();
+            GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
+            newItem.GetComponent<InventoryItem>().InitialiseItem(ships[i]);
+            Debug.Log(ships[i].planet.name);
+        }
+    }
+
+    private void RemoveGlobalShips()
+    {
+        for (int i = 0; i < globalShipsInventory.transform.childCount; i++)
+        {
+            Transform slot = globalShipsInventory.transform.GetChild(i);
+            if (slot.childCount > 0)
+            {
+                Destroy(slot.GetChild(0).gameObject);
+            }
+        }
     }
 
     public static InventoryUtils GetInventoryUtils()
     {
         return _instance;
     }
+
+
 }

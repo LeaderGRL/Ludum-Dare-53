@@ -261,6 +261,18 @@ public class Quest : MonoBehaviour
         }
     }
 
+    public JSON.Data? GetQuestByName(string name)
+    {
+        foreach (var quest in quests)
+        {
+            if (quest.name == name)
+            {
+                return quest;
+            }
+        }
+        return null;
+    }
+
     public JSON.Data[] GetQuests()
     {
         return quests;
