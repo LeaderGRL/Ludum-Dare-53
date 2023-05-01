@@ -134,7 +134,7 @@ public class InventoryManager : MonoBehaviour
         {
             Instantiate(slotPrefab, newInventory.transform);
         }
-        
+        newInventory.SetActive(false);
         return newInventory;
     }
     //public void Remove(Resource item)

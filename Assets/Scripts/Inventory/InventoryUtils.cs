@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +23,20 @@ public class InventoryUtils : MonoBehaviour
     [SerializeField] private TMP_Text planetName;
     [SerializeField] private TMP_Text planetRotationSpeed;
 
+    [SerializeField] private CanvasGroup buyBuildingInterface;
 
+    [Header ("Planet shop")]
+    [SerializeField] private CanvasGroup planetShopInterface;
+    [SerializeField] private GameObject buyStationButton;
+    [SerializeField] private GameObject buyExtractorButton;
+
+    [Header("Planet Structures")]
+    [SerializeField] private GameObject structuresGroup;
+    [SerializeField] private GameObject structureDisplayPrefab;
+
+    [SerializeField] private Sprite iconeStation;
+    [SerializeField] private Sprite iconeExtractor;
+    [SerializeField] private Sprite iconeDefaultStruct;
     private void Awake()
     {
         if (_instance == null)
@@ -113,6 +127,40 @@ public class InventoryUtils : MonoBehaviour
             planetInterface.alpha = 1;
             planetInterface.interactable = true;
             planetInterface.blocksRaycasts = true;
+
+            for (int i = 0; i < structuresGroup.transform.childCount; i++)
+            {
+               
+                Transform slot = structuresGroup.transform.GetChild(i);
+                slot.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
+                if (i < planet.Buildings.Count)
+                {
+                    // Mettre l'icone d'ui building
+                    if (typeof(Station).IsInstanceOfType(planet.Buildings[i]))
+                    {
+                        slot.GetChild(0).gameObject.GetComponent<Image>().sprite = iconeStation;
+                        List<GameObject> inventories = InventoryManager.instance.buildingsInventories[planet.Buildings[i]];
+                        slot.GetChild(0).GetComponent<Button>().onClick.AddListener(() => {
+                            foreach (var item in inventories)
+                            {
+                                item.SetActive(true);
+                            }
+                        });
+
+
+                        continue;
+                    }
+                    
+                }
+                // Mettre icone acheter building
+                slot.GetChild(0).gameObject.GetComponent<Image>().sprite = iconeDefaultStruct;
+                slot.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
+                {
+                    DisplayBuyShipInterface(planet);
+                });
+               
+
+            }
         }
         else
         {
@@ -125,6 +173,31 @@ public class InventoryUtils : MonoBehaviour
             mainGui.blocksRaycasts = true;
         }
     }
+
+    private void DisplayBuyShipInterface(Planet planet)
+    {
+        planetShopInterface.alpha = 1;
+        planetShopInterface.interactable = true;
+        planetShopInterface.blocksRaycasts = true;
+        buyStationButton.GetComponent<Button>().onClick.RemoveAllListeners();
+        buyStationButton.GetComponent<Button>().onClick.AddListener(() =>
+        {
+            Debug.Log("Buy Station!");
+            planet.AddBuilding(new Station());
+            PlanetInterface(planet, true);
+            UnDisplayBuyShipInterface();
+        });
+        
+    }
+
+    private void UnDisplayBuyShipInterface()
+    {
+        planetShopInterface.alpha = 0;
+        planetShopInterface.interactable = false;
+        planetShopInterface.blocksRaycasts = false;
+    }
+
+
 
     public static InventoryUtils GetInventoryUtils()
     {

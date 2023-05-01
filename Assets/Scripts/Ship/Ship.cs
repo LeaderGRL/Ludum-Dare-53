@@ -36,7 +36,7 @@ public class Ship : MonoBehaviour
         GetComponent<Move>().enabled = true;
         GetComponent<Move>().target = GameObject.Find(target).transform;
     }
-    //salut ça va eliott ? moi ça va  
+    //salut ça va eliott ? moi ça va   
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.name == planetName)
