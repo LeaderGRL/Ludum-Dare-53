@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6324038230252150360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7433884020070836090}
+  - component: {fileID: 6745076167979773473}
+  m_Layer: 0
+  m_Name: InventoryUtils
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7433884020070836090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324038230252150360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 703.5992, y: 406.61642, z: 448.99426}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6745076167979773473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324038230252150360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d18e6bcd723166da4f05def9a4a293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemShowed: {fileID: 0}
+  mainGui: {fileID: 0}
+  shipInterface: {fileID: 0}
+  level: {fileID: 0}
+  shipPlanetName: {fileID: 0}
+  fuelLevel: {fileID: 0}
+  shipBuyMenu: {fileID: 0}
+  planetInterface: {fileID: 0}
+  planetName: {fileID: 0}
+  planetRotationSpeed: {fileID: 0}
+  buyBuildingInterface: {fileID: 0}
+  planetShopInterface: {fileID: 0}
+  buyStationButton: {fileID: 0}
+  buyDrillerButton: {fileID: 0}
+  structuresGroup: {fileID: 0}
+  structureDisplayPrefab: {fileID: 4018980600400952573, guid: 2e9c8a3ac1142b746944d6126dc237c2, type: 3}
+  iconeStation: {fileID: 21300000, guid: 83f70ab37dae39360a04a93571595203, type: 3}
+  iconeExtractor: {fileID: 21300000, guid: e1153635269e02f5a9f454a17cb32027, type: 3}
+  iconeDefaultStruct: {fileID: 21300000, guid: 93d674bc098a5b54ca600f8a51ee4a19, type: 3}
+  stationInterface: {fileID: 0}
+  buyShipButton: {fileID: 0}
