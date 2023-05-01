@@ -18688,6 +18688,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 6046999843359091308, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1514774683}
+    - target: {fileID: 6046999843359091308, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseButton
+      objectReference: {fileID: 0}
     - target: {fileID: 6630663287250785706, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

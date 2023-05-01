@@ -72,7 +72,8 @@ public class InventoryUtils : MonoBehaviour
             shipInterface.blocksRaycasts = true;
 
             level.text = "SpaceSheep";
-            shipPlanetName.text = spaceSheep.currentLocation;
+            ShipResource shipResource = (ShipResource)spaceSheep;
+            shipPlanetName.text = shipResource.planet.name;
             fuelLevel.value = spaceSheep.fuelLevel;
         }
         else
@@ -281,7 +282,7 @@ public class InventoryUtils : MonoBehaviour
 
     private void DisplayGlobalsShips()
     {
-        
+        RemoveGlobalShips();
         List<ShipResource> ships = InventoryManager.instance.GetAllShips();
         
         for (int i = 0; i < ships.Count; i++)
@@ -289,6 +290,19 @@ public class InventoryUtils : MonoBehaviour
             InventorySlot slot = globalShipsInventory.transform.GetChild(i).GetComponent<InventorySlot>();
             GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
             newItem.GetComponent<InventoryItem>().InitialiseItem(ships[i]);
+            Debug.Log("");
+        }
+    }
+
+    private void RemoveGlobalShips()
+    {
+        for (int i = 0; i < globalShipsInventory.transform.childCount; i++)
+        {
+            Transform slot = globalShipsInventory.transform.GetChild(i);
+            if (slot.childCount > 0)
+            {
+                Destroy(slot.GetChild(0).gameObject);
+            }
         }
     }
 
