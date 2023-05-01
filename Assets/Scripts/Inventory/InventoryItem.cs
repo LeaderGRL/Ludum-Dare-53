@@ -42,6 +42,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnBeginDrag(PointerEventData eventData)
     {
         image.raycastTarget = false;
+        countText.GetComponent<TextMeshProUGUI>().raycastTarget = false;
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root);
     }
@@ -55,6 +56,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         transform.SetParent(parentAfterDrag);
         image.raycastTarget = true;
+        countText.GetComponent<TextMeshProUGUI>().raycastTarget = true;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -68,7 +70,10 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         switch(item.name)
         {
             case "SpaceShip": 
-                Debug.Log("test"); //DISPLAY UI -> GetStats
+                Debug.Log("SPACESHIP CLICK"); //DISPLAY UI -> GetStats
+                break;
+            case "GemStone":
+                Debug.Log("GEMSTONE CLICK");
                 break;
         }
         Debug.Log(gameObject.name);
