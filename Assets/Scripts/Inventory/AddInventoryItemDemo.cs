@@ -10,8 +10,15 @@ public class AddInventoryItemDemo : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        item = ScriptableObject.CreateInstance<Resource>();
-        item2 = ScriptableObject.CreateInstance<Resource>();
+        //for (var i = 0; i < 15; i++)
+        //{
+        //    var item = ScriptableObject.CreateInstance<Resource>();
+        //    item.id = i;
+        //    item.type = "None";
+        //    item.icon = imageNone;
+
+        //    InventoryManager.instance.Add(item);
+        //}
     }
 
     // Update is called once per frame

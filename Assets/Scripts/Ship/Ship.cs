@@ -47,7 +47,7 @@ public class Ship : MonoBehaviour
     {
         return targetPlanet;
     }
-
+    //salut ça va eliott ? moi ça va   
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.name == planetName)
@@ -59,10 +59,15 @@ public class Ship : MonoBehaviour
             if (station != null)
             {
                 InventoryManager.instance.AddToBuilding(shipRessource, station, 0);
+                if (Quest.instance.NeedZeroRessources(shipRessource.shipStats.AssignedQuest.Value.id))
+                {
+                    // Peut être a changer car si un vaisseau de la même quête arrive et que le dernier est parti elle s'exécute
+                    Quest.instance.finishQuest(shipRessource.shipStats.AssignedQuest.Value.id);
+                }
             }
             else
             {
-                
+                PlanetManager.instance.GetStation(startPlanet).RecallShip(gameObject, other.gameObject);
             }
             Destroy(gameObject);
             // shipStats.AssignedQuest = null;

@@ -14,19 +14,11 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public int count = 1;
 
-    private InventoryUtils _inventoryUtils = InventoryUtils.GetInventoryUtils();
-    private Resource randomResource;
-    private Resource actualShowedResource = null;
-    private bool spaceSheetStatsShow;
+    private InventoryUtils inventoryUtils = InventoryUtils.GetInventoryUtils();
 
     private void Start()
     {
         //InitialiseItem(item);
-    }
-
-    private void FixedUpdate()
-    {
-        // Debug.Log("Debug spécial: " + actualShowedResource.id);
     }
 
     public void InitialiseItem(Resource newItem)
@@ -78,15 +70,32 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         switch(item.type)
         {
             case "SpaceShip":
-                if (!item.Equals(actualShowedResource))
+                //Check if the item is already shown
+                if (!item.Equals(inventoryUtils.itemShowed))
                 {
-                    actualShowedResource = item;
-                    _inventoryUtils.SpaceSheepInterface(item, true);
+                    //Show the item
+                    inventoryUtils.SpaceSheepInterface(item, true);
+                    inventoryUtils.itemShowed = item;
                 }
                 else
                 {
-                    actualShowedResource = null;
-                    _inventoryUtils.SpaceSheepInterface(item, false);
+                    //Hide the item
+                    inventoryUtils.SpaceSheepInterface(item, false);
+                    inventoryUtils.itemShowed = null;
+                }
+                break;
+            case "None":
+                if (!item.Equals(inventoryUtils.itemShowed))
+                {
+                    //Show the Buy Menu
+                    inventoryUtils.ShowSpaceSheepBuyMenu(item, true);
+                    inventoryUtils.itemShowed = item;
+                }
+                else
+                {
+                    //Hide the Buy Menu
+                    inventoryUtils.ShowSpaceSheepBuyMenu(item, false);
+                    inventoryUtils.itemShowed = null;
                 }
                 break;
         }

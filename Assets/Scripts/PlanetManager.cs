@@ -34,10 +34,10 @@ public class PlanetManager : MonoBehaviour
             }
             
         }
-        GameObject button = GameObject.Find("CreateStation");
-        button.GetComponent<Button>().onClick.AddListener(() => 
-            AddBuilding(new Station(), GameObject.Find("Xenoth"))
-            );
+        //GameObject button = GameObject.Find("CreateStation");
+        //button.GetComponent<Button>().onClick.AddListener(() => 
+        //    AddBuilding(new Station(), GameObject.Find("Xenoth"))
+        //    );
             
     }
     
@@ -56,6 +56,18 @@ public class PlanetManager : MonoBehaviour
             if (isPlanet)
             {
                 return planet.Key;
+            }
+        }
+        return null;
+    }
+
+    public GameObject PlanetGameObject(Planet planet)
+    {
+        foreach (var item in planets)
+        {
+            if (item.Value == planet)
+            {
+                return item.Key;
             }
         }
         return null;

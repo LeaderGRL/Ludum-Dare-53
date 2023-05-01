@@ -10155,9 +10155,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4721a8e66501d4e84eb00424d41016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   item: {fileID: 11400000, guid: 923de2c02f860bb47a2c2b7747a0d012, type: 2}
   item2: {fileID: 11400000, guid: 61cd17762904b7b498f767ed2b968a61, type: 2}
   item3: {fileID: 11400000, guid: 9464ea6a48ea00248b2f2c900cd367f3, type: 2}
+=======
+  item: {fileID: 11400000, guid: 61cd17762904b7b498f767ed2b968a61, type: 2}
+  item2: {fileID: 0}
+  image: {fileID: 0}
+>>>>>>> 4254c3c24a7e2c87570d2e7582a22e18ed531cd7
 --- !u!4 &340647499
 Transform:
   m_ObjectHideFlags: 0
@@ -10202,8 +10208,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609910124}
-  m_LocalRotation: {x: 0, y: 0.08079272, z: 0, w: 0.9967309}
-  m_LocalPosition: {x: -0.49344966, y: 0, z: 0.081140324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 0.09999999, y: 0.09999999, z: 0.09999999}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18671,10 +18677,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -20634,8 +20640,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065958625}
+<<<<<<< HEAD
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.26, y: 0, z: -0.418}
+=======
+  m_LocalRotation: {x: 0, y: 0.587852, z: 0, w: 0.8089685}
+  m_LocalPosition: {x: -0.15456872, y: 0, z: 0.47565058}
+>>>>>>> 4254c3c24a7e2c87570d2e7582a22e18ed531cd7
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []

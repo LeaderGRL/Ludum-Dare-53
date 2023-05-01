@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class InventoryManager : MonoBehaviour
     public Dictionary<Building, List<GameObject>> buildingsInventories;
 
     public GameObject inventoryItemPrefab;
+    public Image image;
+    public Sprite spaceShipIcon;
 
     private void Awake()
     {
@@ -59,7 +62,7 @@ public class InventoryManager : MonoBehaviour
             var itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot == null)
             {
-                item.id = i+1;
+                item.id = i;
                 SpawnNewItem(item, slot);
                 return true;
             }
@@ -67,7 +70,22 @@ public class InventoryManager : MonoBehaviour
         }
         return false;
     }
-    
+
+    public void ChangeToSpaceShip()
+    {
+        foreach (var slot in items)
+        {
+            var itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && itemInSlot.item.type != "SpaceShip")
+            {
+                itemInSlot.item.type = "SpaceShip";
+                itemInSlot.item.icon = spaceShipIcon;
+                itemInSlot.image.sprite = spaceShipIcon;
+                break;
+            }
+        }
+    }
+
     public void SpawnNewItem(Resource item, InventorySlot slot)
     {
         GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);
@@ -136,7 +154,7 @@ public class InventoryManager : MonoBehaviour
         {
             Instantiate(slotPrefab, newInventory.transform);
         }
-        
+        newInventory.SetActive(false);
         return newInventory;
     }
     //public void Remove(Resource item)
@@ -151,4 +169,35 @@ public class InventoryManager : MonoBehaviour
     //        }
     //    }
     //}
+
+    public void RemoveItemFromBuilding(Resource item, Building building)
+    {
+        foreach (var inventory in buildingsInventories[building])
+        {
+            if (RemoveItemFromInventory(item, inventory))
+            {
+                return;
+            }
+        }
+    }
+
+    private bool RemoveItemFromInventory(Resource item, GameObject inventory)
+    {
+        for (int i = 0; i < inventory.transform.childCount; i++)
+        {
+            GameObject slot = inventory.transform.GetChild(i).gameObject;
+            if (slot.transform.childCount <= 0)
+            {
+                continue;
+            }
+            InventoryItem itemSlot = slot.transform.GetChild(0).gameObject.GetComponent<InventoryItem>();
+            if (itemSlot.item == item)
+            {
+                Destroy(itemSlot.gameObject);
+                return true;
+            }
+
+        }
+        return false;
+    }
 }

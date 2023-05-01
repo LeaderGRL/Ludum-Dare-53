@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -169,6 +170,8 @@ public class Quest : MonoBehaviour
             if (quest.id != questID) continue;
             quest.done = true;
             quest.inProgress = false;
+            PlayerManager.instance.AddExperience(quest.reward.xp);
+            PlayerManager.instance.AddMoney(quest.reward.gold);
             quests[i] = quest;
         }
     }
@@ -186,6 +189,22 @@ public class Quest : MonoBehaviour
 
             quests[i] = quest;
         }
+    }
+
+    public bool NeedZeroRessources(int questId)
+    {
+        foreach (var quest in quests)
+        {
+            if (quest.id != questId) continue;
+            foreach (var material in quest.materials)
+            {
+                if (material.Value > 0)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 
@@ -245,5 +264,13 @@ public class Quest : MonoBehaviour
     public JSON.Data[] GetQuests()
     {
         return quests;
+    }
+
+    
+
+    public IEnumerator FinishQuestCoroutine(int questId, float time)
+    {
+        yield return new WaitForSeconds(time);
+        finishQuest(questId);
     }
 }
