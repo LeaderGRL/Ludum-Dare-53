@@ -131,4 +131,35 @@ public class InventoryManager : MonoBehaviour
     //        }
     //    }
     //}
+
+    public void RemoveItemFromBuilding(Resource item, Building building)
+    {
+        foreach (var inventory in buildingsInventories[building])
+        {
+            if (RemoveItemFromInventory(item, inventory))
+            {
+                return;
+            }
+        }
+    }
+
+    private bool RemoveItemFromInventory(Resource item, GameObject inventory)
+    {
+        for (int i = 0; i < inventory.transform.childCount; i++)
+        {
+            GameObject slot = inventory.transform.GetChild(i).gameObject;
+            if (slot.transform.childCount <= 0)
+            {
+                continue;
+            }
+            InventoryItem itemSlot = slot.transform.GetChild(0).gameObject.GetComponent<InventoryItem>();
+            if (itemSlot.item == item)
+            {
+                Destroy(itemSlot.gameObject);
+                return true;
+            }
+
+        }
+        return false;
+    }
 }
