@@ -6,6 +6,7 @@ public class AddInventoryItemDemo : MonoBehaviour
 {
     public Resource item;
     public Resource item2;
+    public Resource item3;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +25,11 @@ public class AddInventoryItemDemo : MonoBehaviour
         {
             InventoryManager.instance.Add(item2);
         }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            InventoryManager.instance.Add(item3);
+        }
     }
 }
+

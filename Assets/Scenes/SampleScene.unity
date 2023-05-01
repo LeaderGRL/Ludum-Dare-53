@@ -10023,6 +10023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 923de2c02f860bb47a2c2b7747a0d012, type: 2}
   item2: {fileID: 11400000, guid: 61cd17762904b7b498f767ed2b968a61, type: 2}
+  item3: {fileID: 11400000, guid: 9464ea6a48ea00248b2f2c900cd367f3, type: 2}
 --- !u!4 &340647499
 Transform:
   m_ObjectHideFlags: 0
