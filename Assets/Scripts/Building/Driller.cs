@@ -7,11 +7,7 @@ public class Driller : Building, IBuyable
     public int price => 3000;
     private int collectTime = 0;
 
-    private void Awake()
-    {
-        
-    }
-    private void Start()
+    public Driller() 
     {
         level = 1;
         List<int> capacities = new List<int>
@@ -19,16 +15,21 @@ public class Driller : Building, IBuyable
             3
         };
         InventoryManager.instance.AddBuildingInventory(this, capacities);
-        SetCollectTime(10);
+        SetCollectTime(1);
     }
 
-    private IEnumerator CollectResource(Planet planet)
+    public IEnumerator CollectResource(Planet planet)
     {
-        yield return new WaitForSeconds(GetCollectTime());
-        foreach (var resource in planet.Resources)
+        while (true)
         {
-            InventoryManager.instance.AddToBuilding(resource, this, 0);
+            yield return new WaitForSeconds(GetCollectTime());
+            Debug.Log("Collect!");
+            foreach (var resource in planet.Resources)
+            {
+                InventoryManager.instance.AddToBuilding(resource, this, 0);
+            }
         }
+        
     }
     
     public void SetCollectTime(int time)

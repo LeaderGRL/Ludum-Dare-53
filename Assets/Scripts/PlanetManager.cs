@@ -18,6 +18,7 @@ public class PlanetManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            
         }
     }
     void Start()
@@ -27,6 +28,7 @@ public class PlanetManager : MonoBehaviour
         {
             foreach (var item in scriptableObjectsPlanetList)
             {
+                item.Buildings = new List<Building>();
                 if (item.Name == planet.name)
                 {
                     planets.Add(planet, item);

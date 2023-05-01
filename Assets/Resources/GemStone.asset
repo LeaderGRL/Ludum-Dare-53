@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36978e64a4588341b9701e3ff3d1cd4, type: 3}
   m_Name: GemStone
   m_EditorClassIdentifier: 
-  name: GemStone
+  type: 
   quantity: 0
   icon: {fileID: 21300000, guid: 1ddfa3cebc4975d46befdab019ee868e, type: 3}
   value: 100
-  Stackable: 1
+  stackable: 1
+  currentLocation: 
+  fuelLevel: 0
+  id: 0

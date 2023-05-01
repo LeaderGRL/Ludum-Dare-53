@@ -135,7 +135,7 @@ public class InventoryUtils : MonoBehaviour
 
             for (int i = 0; i < structuresGroup.transform.childCount; i++)
             {
-               
+                Debug.Log(planet.Buildings.Count);
                 Transform slot = structuresGroup.transform.GetChild(i);
                 slot.GetChild(0).GetComponent<Button>().onClick.RemoveAllListeners();
                 if (i < planet.Buildings.Count)
@@ -152,7 +152,28 @@ public class InventoryUtils : MonoBehaviour
 
                         continue;
                     }
-                    
+                    if (typeof(Driller).IsInstanceOfType(planet.Buildings[i]))
+                    {
+                        slot.GetChild(0).gameObject.GetComponent<Image>().sprite = iconeExtractor;
+                        Driller driller = (Driller)planet.Buildings[i];
+                        slot.GetChild(0).GetComponent<Button>().onClick.AddListener(() =>
+                        {
+                            foreach (var item in InventoryManager.instance.GetAllInventories())
+                            {
+                                item.SetActive(false);
+                            }
+                            foreach (var inventory in InventoryManager.instance.buildingsInventories[driller])
+                            {
+                                inventory.SetActive(true);
+                            }
+                            UnDisplayBuyShipInterface();
+                        });
+                        
+                        
+                        continue;
+                    }
+
+
                 }
                 // Mettre icone acheter building
                 slot.GetChild(0).gameObject.GetComponent<Image>().sprite = iconeDefaultStruct;
@@ -198,9 +219,11 @@ public class InventoryUtils : MonoBehaviour
         buyDrillerButton.GetComponent<Button>().onClick.AddListener(() =>
         {
             Debug.Log("Buy Driller!");
-            planet.AddBuilding(new Driller());
+            Driller driller = new Driller();
+            planet.AddBuilding(driller);
             PlanetInterface(planet, true);
             UnDisplayBuyShipInterface();
+            StartCoroutine(driller.CollectResource(planet));
         });
 
     }

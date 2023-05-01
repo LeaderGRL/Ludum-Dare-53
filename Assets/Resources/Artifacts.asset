@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36978e64a4588341b9701e3ff3d1cd4, type: 3}
   m_Name: Artifacts
   m_EditorClassIdentifier: 
-  name: Artifacts
+  type: 
   quantity: 0
   icon: {fileID: 0}
   value: 10
-  Stackable: 1
+  stackable: 1
+  currentLocation: 
+  fuelLevel: 0
+  id: 0

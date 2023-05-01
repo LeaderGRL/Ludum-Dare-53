@@ -102,8 +102,23 @@ public class InventoryManager : MonoBehaviour
         AddToBuilding(item, inventory);
     }
 
-    public void AddToBuilding(Resource item, GameObject inventory)
+    public bool AddToBuilding(Resource item, GameObject inventory)
     {
+        for (int i = 0; i < inventory.transform.childCount; i++)
+        {
+            InventorySlot slot = inventory.transform.GetChild(i).GetComponent<InventorySlot>();
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+            if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < maxStack && itemInSlot.item.stackable == true)
+            {
+                Debug.Log("NOT FULL");
+                itemInSlot.count++;
+                itemInSlot.RefreshCount();
+                return true;
+            }
+
+        }
+
         for (int i = 0; i < inventory.transform.childCount; i++)
         {
             InventorySlot slot = inventory.transform.GetChild(i).GetComponent<InventorySlot>();
@@ -111,9 +126,10 @@ public class InventoryManager : MonoBehaviour
             if (itemInSlot == null)
             {
                 SpawnNewItem(item, slot);
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     public void AddBuildingInventory(Building building, List<int> inventoriesCapcities)
@@ -146,11 +162,15 @@ public class InventoryManager : MonoBehaviour
             }
             return;
         }
+        else
+        {
+            
+        }
     }
 
     public GameObject InstantiateInventory(int capacity)
     {
-        GameObject newInventory = Instantiate(inventoryContainerPrefab, GameObject.Find("Canvas").transform);
+        GameObject newInventory = Instantiate(inventoryContainerPrefab, GameObject.Find("CanvasPlanet").transform);
         for (int i = 0; i < capacity; i++)
         {
             Instantiate(slotPrefab, newInventory.transform);
