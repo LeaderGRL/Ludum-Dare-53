@@ -247,7 +247,7 @@ public class InventoryManager : MonoBehaviour
     {
         GameObject fromInventory = buildingsInventories[from][inventoryIndex];
         RemoveItemFromBuilding(item, from);
-        AddToBuilding(item, to, 0, fromInventory.GetComponent<InventoryItem>().c);
+        AddToBuilding(item, to, 0, fromInventory.GetComponent<InventoryItem>().count);
     }
 
     //public void TransferItem(Resource item, Building from, Building to, int inventoryIndex)
