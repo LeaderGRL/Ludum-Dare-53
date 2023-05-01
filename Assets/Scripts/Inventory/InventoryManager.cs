@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class InventoryManager : MonoBehaviour
     public Dictionary<Building, List<GameObject>> buildingsInventories;
 
     public GameObject inventoryItemPrefab;
+    public Image image;
+    public Sprite spaceShipIcon;
 
     private void Awake()
     {
@@ -42,14 +45,29 @@ public class InventoryManager : MonoBehaviour
             var itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot == null)
             {
-                item.id = i+1;
+                item.id = i;
                 SpawnNewItem(item, slot);
                 return;
             }
             
         }
     }
-    
+
+    public void ChangeToSpaceShip()
+    {
+        foreach (var slot in items)
+        {
+            var itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && itemInSlot.item.type != "SpaceShip")
+            {
+                itemInSlot.item.type = "SpaceShip";
+                itemInSlot.item.icon = spaceShipIcon;
+                itemInSlot.image.sprite = spaceShipIcon;
+                break;
+            }
+        }
+    }
+
     public void SpawnNewItem(Resource item, InventorySlot slot)
     {
         GameObject newItem = Instantiate(inventoryItemPrefab, slot.transform);

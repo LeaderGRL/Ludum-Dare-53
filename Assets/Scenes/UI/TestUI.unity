@@ -235,15 +235,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &201074537 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1260297294251047304, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
-  m_PrefabInstance: {fileID: 2069651259}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &224186264 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1998645937403902242, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
   m_PrefabInstance: {fileID: 1369407015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &225951631 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8727780522841191769, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+  m_PrefabInstance: {fileID: 2069651259}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &268708000
 PrefabInstance:
@@ -1094,12 +1094,12 @@ RectTransform:
   - {fileID: 931704864}
   - {fileID: 224186264}
   - {fileID: 2065372365}
-  m_Father: {fileID: 201074537}
+  m_Father: {fileID: 225951631}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -686, y: 205}
+  m_AnchoredPosition: {x: -707.9, y: 242.99995}
   m_SizeDelta: {x: 404, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &931704864 stripped
@@ -1338,6 +1338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceShipInventoryContainer: {fileID: 884826556}
   inventoryItemPrefab: {fileID: 672514140886635242, guid: 09584b4781db94248b02620fdfc6b253, type: 3}
+  image: {fileID: 0}
+  spaceShipIcon: {fileID: 21300000, guid: d25cf92dcf8933140a291cc67cc636ba, type: 3}
 --- !u!4 &1080168010
 Transform:
   m_ObjectHideFlags: 0
@@ -1365,11 +1367,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d18e6bcd723166da4f05def9a4a293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemShowed: {fileID: 0}
   mainGui: {fileID: 2069651262}
   shipInterface: {fileID: 594107752}
   level: {fileID: 104750761}
-  shipPlanetName: {fileID: 0}
+  shipPlanetName: {fileID: 1720344805}
   fuelLevel: {fileID: 345342115}
+  shipBuyMenu: {fileID: 1476710549}
   planetInterface: {fileID: 1890074084}
   planetName: {fileID: 1890074083}
   planetRotationSpeed: {fileID: 1890074082}
@@ -1385,9 +1389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4721a8e66501d4e84eb00424d41016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 61cd17762904b7b498f767ed2b968a61, type: 2}
-  item2: {fileID: 11400000, guid: 61cd17762904b7b498f767ed2b968a61, type: 2}
-  image: {fileID: 21300000, guid: d25cf92dcf8933140a291cc67cc636ba, type: 3}
+  imageSpaceShip: {fileID: 21300000, guid: d25cf92dcf8933140a291cc67cc636ba, type: 3}
+  imageNone: {fileID: 21300000, guid: e2e464dccd82f67b0a9745476213a624, type: 3}
 --- !u!224 &1161231228 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1998645937403902242, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
@@ -1804,6 +1807,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
+--- !u!225 &1476710549 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 4953348607397345223, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+  m_PrefabInstance: {fileID: 2069651259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1567660018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2011,6 +2019,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
+--- !u!114 &1720344805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7126951277033839891, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+  m_PrefabInstance: {fileID: 2069651259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1737154100 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1998645937403902242, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
@@ -2115,6 +2134,10 @@ PrefabInstance:
     - target: {fileID: 1998645937403902242, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096303446114018996, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7677725230157881578, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
       propertyPath: m_Name
@@ -2347,7 +2370,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 95932672397324632, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 193043868848816799, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2453,6 +2476,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2664146606966647717, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2983185621757329166, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_Name
       value: GUI
@@ -2465,14 +2492,74 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1080168011}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CancelBuySpaceSheep
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InventoryUtils, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041281623182161690, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4953348607397345223, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5231136571824396034, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1080168011}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BuySpaceSheep
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InventoryUtils, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815590218806979790, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1260297294251047304, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8727780522841191769, guid: fad5fe4a203a0638fb2aaca3924145b3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 884826560}
     m_AddedComponents:
@@ -2514,7 +2601,6 @@ GameObject:
   - component: {fileID: 2091182699}
   - component: {fileID: 2091182698}
   - component: {fileID: 2091182697}
-  - component: {fileID: 2091182701}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -2608,20 +2694,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2091182701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091182696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daf51a7f76885da4dbc3957aca677791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactableObject: {fileID: 2091182696}
-  cam: {fileID: 963194227}
 --- !u!224 &2126234862 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1998645937403902242, guid: 0d9cc248d6f7105468dd27995c58f41f, type: 3}
